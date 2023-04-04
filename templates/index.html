@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+  <title>FlexCase</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.0/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Ms+Madi&family=Quicksand:wght@300&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Montserrat+Alternates:ital,wght@1,500&family=Ms+Madi&family=Quicksand:wght@300&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Mochiy+Pop+One&family=Montserrat+Alternates:ital,wght@1,500&family=Ms+Madi&family=Quicksand:wght@300&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600&family=Lato:wght@300&family=Mochiy+Pop+One&family=Montserrat+Alternates:ital,wght@1,500&family=Ms+Madi&family=Public+Sans:wght@500&family=Quicksand:wght@300&family=Source+Sans+Pro&family=Ubuntu:wght@300;400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <style>
+    .profile-menu .dropdown-menu {
+      right: 0;
+      left: unset;
+    }
+
+    .profile-menu .fa-fw {
+      margin-right: 10px;
+    }
+
+    .toggle-change::after {
+      border-top: 0;
+      border-bottom: 0.3em solid;
+    }
+
+    .img-fluid {
+      max-width: 44%;
+      height: auto;
+    }
+
+    @media screen and (max-width: 768px) {
+      .img-fluid {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <nav class="navbar navbar-expand-lg navbar-lightfixed-top">
+        <a class="navbar-brand" href="#"><a class="navbar-brand" href="index.html">
+                <div class="logo-image">
+                    <img src="../static/img/png/logo-black.png" class="img-fluid">
+                </div>
+            </a>
+        </a>
+
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            style="color: #000000;" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">
+                        <h4>Leaderboard</h4>
+                    </a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="#coupons">
+                        <h4>Find Projects</h4>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#coupons">
+                        <h4>About Us</h4>
+                    </a>
+                </li>
+
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">
+                        <h4>Sign In</h4>
+                    </a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="#"
+                        style="background-color: #ffb703; border-radius: 10px; padding-bottom: 2%;">
+                        <h4>Sign Up</h4>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+
+    </nav> -->
+  {% if user.is_authenticated %}
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="" href="#"><img src="../static/img/png/logo.png" class="img-fluid"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" style="font-size: 20px;" href="#">LeaderBoard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="font-size: 20px;" href="#">Find Project</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 profile-menu">
+          <img class="fir-author-image fir-clickcircle" src="{{profile_model.profileimg.url}}"
+            alt="David East - Author">
+          <li class="nav-item dropdown" style="font-size: 15px;">
+
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="dashboard"><i class="fas fa-sliders-h fa-fw"></i>
+                  {{request.user.first_name}} {{request.user.last_name}}</a></li>
+              <li><a class="dropdown-item" href="settings"><i class="fas fa-cog fa-fw"></i> Settings</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="/logout"><i class="fas fa-sign-out-alt fa-fw"></i> Log Out</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  {% else %}
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="" href="#"><img src="../static/img/png/logo.png" class="img-fluid"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" style="font-size: 20px;" href="#">LeaderBoard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="font-size: 20px;" href="#">Find Project</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 profile-menu">
+          <button type="button" class="btn btn-outline-primary" onclick="location.href = '/login';">Sign In</button>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          <button type="button" class="btn btn-primary" onclick="location.href = '/register';">Sign Up</button>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  {% endif %}
+  <div class="full-bg-image">
+    <div class="carousel-caption d-none d-md-block">
+      <h2 style="font-size:200%">
+        Prepare, Present, Pro-up with
+        <div class="carousel-image">
+          <center> <img src="../static/img/png/logo-no-background.png" class="img-fluid"
+              style="width: 70%; height: 70%; margin-top: 5%"></center>
+        </div>
+        <div class="search__container" style="margin-top: -5%;">
+
+          <form action="search" method="get">
+            <input class="search__input" name="query" type="text" placeholder="Search Projects">
+          </form>
+        </div>
+
+      </h2>
+    </div>
+  </div>
+
+  <div class="dropdown">
+
+  </div>
+
+
+  <!-- Container for demo purpose -->
+  <!-- Container for demo purpose -->
+  <div class="projects">
+    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false"
+      style="float: left; margin-top: 2%; margin-bottom: 2%; border-radius: 17px; border-color: #ffb703; border-width: 1.5px; margin-left: 2%;font-family:'Lato', sans-serif">
+      Popular
+    </button>
+
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="font-family:'Lato', sans-serif">
+      <a class="dropdown-item" href="#">Popular</a>
+      <a class="dropdown-item" href="#">Latest</a>
+      <a class="dropdown-item" href="#">Oldest</a>
+
+    </div>
+    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false"
+      style="float: right; margin-top: 2%; margin-bottom: 2%; border-radius: 17px; border-color: #ffb703; border-width: 1.5px; margin-right: 2%; font-family:'Lato', sans-serif;">
+      Filter
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="font-family:'Lato', sans-serif">
+      <a class="dropdown-item" href="#">Popular</a>
+      <a class="dropdown-item" href="#">Latest</a>
+      <a class="dropdown-item" href="#">Oldest</a>
+
+    </div>
+    <ul class="cards">
+      {% for post in posts %}
+      <li>
+        <a href="/post?post_id={{post.id}}" class="card">
+          <img src="{{post.post_thumbnail.url}}" class="card__image" alt="" />
+          <div class="card__overlay">
+            <div class="card__header">
+              <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+                <path />
+              </svg>
+              <img class="card__thumb" src="{{post.user_profile.profileimg.url}}" alt="" />
+              <div class="card__header-text">
+                <h3 class="card__title">{{post.title}}</h3>
+                <span class="card__status">3 hours ago</span>
+              </div>
+            </div>
+            <p class="card__description">{{post.description}}</p>
+          </div>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <!-- Container for demo purpose -->
+  <!-- Container for demo purpose -->
+  <footer class="page-footer font-small unique-color-dark">
+
+
+
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left mt-5">
+
+      <!-- Grid row -->
+      <div class="row mt-3">
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+          <!-- Content -->
+
+          <center><img src="../static/img/png/logo-black.png" class="img-fluid" style="width: 300px; height: auto;">
+          </center>
+
+          <div class="row py-4 d-flex align-items-center">
+
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-6 col-lg-7 text-center text-md-right">
+
+              <!-- Facebook -->
+              <a class="fb-ic">
+                <i class="fab fa-facebook-f white-text mr-4" style="font-size: 22px;"> </i>
+              </a>
+              <!-- Twitter -->
+              <a class="tw-ic">
+                <i class="fab fa-twitter white-text mr-4" style="font-size: 22px;"> </i>
+              </a>
+              <!--Instagram-->
+              <a class="ins-ic">
+                <i class="fab fa-instagram white-text" style="font-size: 22px;"> </i>
+              </a>
+
+            </div>
+            <!-- Grid column -->
+
+          </div>
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+          <!-- Links -->
+          <h6 class="text-uppercase font-weight-bold">Useful links</h6>
+          <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+          <p>
+            <a href="#!">Your Account</a>
+          </p>
+
+          <p>
+            <a href="#!">FAQs</a>
+          </p>
+          <p>
+            <a href="#!">Terms & Conditions</a>
+          </p>
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+          <!-- Links -->
+          <h6 class="text-uppercase font-weight-bold">Contact Us</h6>
+          <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+          <p>
+            <i class="fas fa-home mr-3"></i>FoE, Manipal University
+          </p>
+          <p>
+            <i class="fas fa-envelope mr-3"></i>serviceflexcase@gmail.com
+          </p>
+          <p>
+            <i class="fas fa-phone mr-3"></i>1800-456-789 (Toll Free)
+          </p>
+
+
+        </div>
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+          <!-- Content -->
+
+          <center><img src="../static/img/manipal.png" class="img-fluid" style="width: 300px; height: auto;"></center>
+
+
+
+        </div>
+      </div>
+      <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2021 Copyright:
+      <a href="index.html"> www.flexcase.co</a>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+
+
+  <style type="text/css">
+    .fir-clickcircle {
+      height: 60px;
+      width: 60px;
+      position: relative;
+      border-radius: 100px;
+      cursor: pointer;
+    }
+
+    .search__container {
+      padding-top: 64px;
+    }
+
+
+
+    .search__input {
+      width: 100%;
+      padding: 12px 24px;
+
+      background-color: transparent;
+      transition: transform 250ms ease-in-out;
+      font-size: 14px;
+      line-height: 18px;
+
+      color: #ffffff;
+      background-color: transparent;
+      /*         background-image: url(http://mihaeltomic.com/codepen/input-search/ic_search_black_24px.svg); */
+
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: 18px 18px;
+      background-position: 95% center;
+      border-radius: 50px;
+      border: 2px solid #ffffff;
+      transition: all 250ms ease-in-out;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+    }
+
+    .search__input::placeholder {
+      color: rgb(255, 255, 255);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .search__input:hover,
+    .search__input:focus {
+      padding: 12px 0;
+      outline: 0;
+      border: 1px solid transparent;
+      border-bottom: 1px solid #ffffff;
+      border-radius: 0;
+      background-position: 100% center;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .full-bg-image {
+      background-image: url('../static/img/cover-1.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 55vh;
+      width: 100%;
+      margin-bottom: -64px;
+    }
+
+
+
+    .navbar li a {
+      font-family: 'Inter', sans-serif;
+      margin-right: 15px;
+    }
+
+    .nav {
+      border-collapse: separate;
+      border-radius: 20px;
+    }
+
+
+
+    .carousel-item {
+
+      min-height: 200px;
+
+    }
+
+    .carousel-caption {
+      font-family: 'Mochiy Pop One', sans-serif;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-align: center;
+    }
+
+    .logo-image {
+      width: 200px;
+      height: 200px;
+      overflow: hidden;
+
+    }
+
+    .carousel-caption h2 {
+      text-shadow: 0 0 3px #000000, 0 0 5px #000000;
+      text-decoration-color: rgb(229, 255, 0);
+      font-size: 40px;
+      color: #ffff;
+      animation: fadeInLeft 1.2s ease forwards;
+    }
+
+    .navbar-brand {
+      font-family: 'Mochiy Pop One', sans-serif;
+      font-family: 'Ms Madi', cursive;
+      font-family: 'Quicksand', sans-serif;
+      margin-bottom: -9%;
+
+    }
+
+    .carousel-caption h1 {
+      font-size: 65px;
+      color: #ffff;
+    }
+
+
+
+    h4 {
+      font-size: 20px;
+    }
+
+    .btn dropdown-toggle {
+      font-family: 'Lato', sans-serif;
+      font-family: 'Mochiy Pop One', sans-serif;
+      font-family: 'Montserrat Alternates', sans-serif;
+      font-family: 'Ms Madi', cursive;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    h1 {
+      font-family: 'Secular One', sans-serif;
+      color: rgb(24, 218, 6);
+    }
+
+    h4 {
+      color: black;
+    }
+
+    @keyframes fadeInLeft {
+      0% {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0px);
+
+      }
+
+    }
+
+    .nav-link:hover::after {
+
+      color: #ffb703;
+    }
+
+    :root {
+      --surface-color: #fff;
+      --curve: 40;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .projects {
+      font-family: 'Mochiy Pop One', sans-serif;
+      background-color: #Fbf7f2;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 4rem 5vw;
+      padding-top: 100px;
+      padding-bottom: 100px;
+      list-style-type: none;
+    }
+
+    .card {
+      position: relative;
+      display: block;
+      height: 100%;
+      border-radius: calc(var(--curve) * 1px);
+      overflow: hidden;
+      text-decoration: none;
+    }
+
+    .card__image {
+      width: 100%;
+      height: auto;
+    }
+
+    .card__overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1;
+      border-radius: calc(var(--curve) * 1px);
+      background-color: var(--surface-color);
+      transform: translateY(100%);
+      transition: .2s ease-in-out;
+    }
+
+    .card:hover .card__overlay {
+      transform: translateY(0);
+    }
+
+    .card__header {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 2em;
+      padding: 2em;
+      border-radius: calc(var(--curve) * 1px) 0 0 0;
+      background-color: var(--surface-color);
+      transform: translateY(-100%);
+      transition: .2s ease-in-out;
+    }
+
+    .card__arc {
+      width: 80px;
+      height: 80px;
+      position: absolute;
+      bottom: 100%;
+      right: 0;
+      z-index: 1;
+    }
+
+    .card__arc path {
+      fill: var(--surface-color);
+      d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
+    }
+
+    .card:hover .card__header {
+      transform: translateY(0);
+    }
+
+    .card__thumb {
+      flex-shrink: 0;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    .card__title {
+      font-size: 1em;
+      margin: 0 0 .3em;
+      color: #219ebc;
+    }
+
+    .card__tagline {
+      display: block;
+      margin: 1em 0;
+      font-family: 'Mochiy Pop One', sans-serif;
+      font-size: .8em;
+      color: #8ecae6;
+    }
+
+    .card__status {
+      font-size: .8em;
+      color: #8ecae6;
+    }
+
+    .card__description {
+      padding: 0 2em 2em;
+      margin: 0;
+      color: #8ecae6;
+      font-family: 'Mochiy Pop One', sans-serif;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+    }
+
+    .fa-eye {
+      margin-left: 50px;
+      margin-bottom: auto;
+      margin-top: -20px;
+    }
+  </style>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+  <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js'></script>
+  <script>
+    document.querySelectorAll('.dropdown-toggle').forEach(item => {
+      item.addEventListener('click', event => {
+
+        if (event.target.classList.contains('dropdown-toggle')) {
+          event.target.classList.toggle('toggle-change');
+        }
+        else if (event.target.parentElement.classList.contains('dropdown-toggle')) {
+          event.target.parentElement.classList.toggle('toggle-change');
+        }
+      })
+    });
+  </script>
+</body>
+
+<script src="https://kit.fontawesome.com/07ff6f1307.js" crossorigin="anonymous"></script>
+
+</html>
+
+</html>

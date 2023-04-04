@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Public Profile Page</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="card mb-3">
+              <img src="{{ post.image_1.url }}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <p class="card-text">{{ post.description }}</p>
+                <p class="card-text"><small class="text-muted">{{ post.date_created|date:"F d, Y" }}</small></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <h4>Author</h4>
+              </div>
+              <div class="card-body">
+                <div class="media">
+                  <img src="{{ post.user_profile.profileimg.url }}" class="mr-3 rounded-circle" alt="..." width="64" height="64">
+                  <div class="media-body">
+                    <h5 class="mt-0">{{ post.user.username }}</h5>
+                    <p>{{ post.user_profile.bio }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

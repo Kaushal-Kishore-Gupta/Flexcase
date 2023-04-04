@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Public Profile Page</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <img src="{{ profile_model.profileimg.url }}" class="img-fluid mb-3" alt="Profile Picture">
+            <h2>{{ profile_model.user.username }}</h2>
+            <p>{{ profile_model.user.email }}</p>
+            <p>{{ profile_model.bio }}</p>
+            <p>LinkedIn: <a href="{{ profile_model.linkedin }}">{{ profile_model.linkedin }}</a></p>
+            <p>Github: <a href="{{ profile_model.github }}">{{ profile_model.github }}</a></p>
+            <p>Website: <a href="{{ profile_model.website }}">{{ profile_model.website }}</a></p>
+            <p>Other: <a href="{{ profile_model.other }}">{{ profile_model.other }}</a></p>
+            <p>Academic Year: {{ profile_model.acadmicyear }}</p>
+            <p>Branch: {{ profile_model.branch }}</p>
+            <p>Location: {{ profile_model.location }}</p>
+          </div>
+          <div class="col-md-9">
+            <div class="row">
+              {% for post in posts %}
+              <div class="col-md-4 mb-3">
+                <div class="card">
+                  <img src="{{ post.post_thumbnail.url }}" class="card-img-top" alt="Project Thumbnail">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text">{{ post.description }}</p>
+                    <a href="{{ post.github_link }}" class="btn btn-primary">Github</a>
+                    <a href="{{ post.website_link }}" class="btn btn-secondary">Website</a>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

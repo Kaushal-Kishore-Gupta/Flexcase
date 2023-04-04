@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
+    />
+    <link href="/static/assetstest/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/assetstest/css/owl.carousel.min.css" />
+    <link
+      rel="stylesheet"
+      href="/static/assetstest/css/owl.theme.default.min.css"
+    />
+    <link rel="stylesheet" href="/static/assetstest/css/animate.min.css" />
+    <link rel="stylesheet" href="/static/assetstest/css/smooth-scrollbar.css" />
+    <link rel="stylesheet" href="/static/assetstest/css/lightbox.min.css" />
+    <link rel="stylesheet" href="/static/assetstest/css/style.css" />
+    <link rel="stylesheet" href="/static/assetstest/css/responsive.css" />
+  </head>
+  <body class="home1-page">
+    
+    <video class="body-overlay" muted autoplay loop>
+      <source src="/static/assetstest/images/video2.mp4" type="video/mp4" />
+    </video>
+    <!-- <div class="page-loader">
+      <div class="bounceball"></div>
+    </div> -->
+    <div class="left-sidebar">
+      <div
+        class="sidebar-header d-flex align-items-center justify-content-between"
+      >
+        <h2 class="name">{{profile_model.user.first_name}}</h2>
+        <span class="designation">{{profile_model.user.designation}}</span>
+      </div>
+      <img class="me" src="{{ profile_model.profileimg.url }}" alt="Me" />
+      <h2 class="email">{{profile_model.user.username}}</h2>
+      <h2 id="myText" class="address" onclick="copyText()" style="overflow:hidden;">
+        {{profile_model.user.email}}
+      </h2>
+      <ul
+        class="social-profile d-flex align-items-center flex-wrap justify-content-center"
+      >
+        <li>
+            {% if profile_model.linkedin %}
+              <a href="{{profile_model.linkedin}}"><i class="lab la-linkedin"></i></a>
+            {% endif %}
+        </li>
+        <li>
+          {% if profile_model.github %}
+              <a href="{{profile_model.github}}"><i class="lab la-github"></i></a>
+          {% endif %}
+        </li>
+        <li>
+          {% if profile_model.twitter %}
+              <a href="{{profile_model.twitter}}"><i class="lab la-twitter"></i></a>
+            {% endif %}
+        </li>
+        <li>
+          {% if profile_model.website %}
+              <a href="{{profile_model.website}}"><i class="las la-globe"></i></a>
+            {% endif %}
+        </li>
+      </ul>
+      <a href="home1.html#" class="theme-btn">
+        <i class="las la-envelope"></i> Follow Me!
+      </a>
+    </div>
+    <main class="drake-main">
+      <div id="smooth-wrapper">
+        <div id="smooth-content">
+          <div class="left-sidebar">
+            <div
+              class="sidebar-header d-flex align-items-center justify-content-between"
+            >
+              <h2 class="name">{{profile_model.user.first_name}}</h2>
+              <span class="designation"
+                >{{profile_model.user.designation}}</span
+              >
+            </div>
+            <img class="me" src="{{ profile_model.profileimg.url }}" alt="Me" />
+            <h2 class="email">{{profile_model.user.username}}</h2>
+            <h2 id="myText" class="address" onclick="copyText()">
+              {{profile_model.user.email}}
+            </h2>
+            <ul
+              class="social-profile d-flex align-items-center flex-wrap justify-content-center"
+            >
+              <li>
+                <a href="home1.html"><i class="lab la-linkedin"></i></a>
+              </li>
+              <li>
+                <a href="home1.html"><i class="lab la-github"></i></a>
+              </li>
+              <li>
+                <a href="home1.html"><i class="lab la-twitter"></i></a>
+              </li>
+              <li>
+                <a href="home1.html"><i class="lab la-dribbble"></i></a>
+              </li>
+            </ul>
+            <a href="home1.html#" class="theme-btn">
+              <i class="las la-envelope"></i> Hire Me!
+            </a>
+          </div>
+          <section class="hero-section page-section scroll-to-page" id="home">
+            <div class="custom-container">
+              <div class="hero-content content-width">
+                <div class="section-header">
+                  <h4
+                    class="subtitle scroll-animation"
+                    data-animation="fade_from_bottom"
+                  ></h4>
+                  <h1
+                    class="scroll-animation"
+                    data-animation="fade_from_bottom"
+                  >
+                    Say Hi from
+                    <span
+                      >{{profile_model.user.first_name}}
+                      {{profile_model.user.last_name}}</span
+                    >, Framer Designer and Developer
+                  </h1>
+                </div>
+                <p class="scroll-animation" data-animation="fade_from_bottom">
+                  {{profile_model.bio}}
+                </p>
+                <a
+                  href="{% url 'profile' pk=pk %}#portfolio"
+                  class="go-to-project-btn scroll-to scroll-animation"
+                  data-animation="rotate_up"
+                >
+                  <img
+                    src="/static/assetstest/images/round-text.png"
+                    alt="Rounded text"
+                  />
+                  <i class="las la-arrow-down"></i>
+                </a>
+                <div class="facts d-flex">
+                  <div
+                    class="left scroll-animation"
+                    data-animation="fade_from_left"
+                  >
+                    <h1>10+</h1>
+                    <p>Years of <br />Experience</p>
+                  </div>
+                  <div
+                    class="right scroll-animation"
+                    data-animation="fade_from_right"
+                  >
+                    <h1>{{posts|length}}+</h1>
+                    <p>projects completed</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="skills-area page-section scroll-to-page" id="skills">
+            <div class="custom-container">
+              <div class="skills-content content-width">
+                <div class="section-header">
+                  <h4
+                    class="subtitle1 scroll-animation"
+                    data-animation="fade_from_bottom"
+                  >
+                    <i class="las la-shapes"></i> my skills
+                  </h4>
+                  <h1
+                    class="scroll-animation"
+                    data-animation="fade_from_bottom"
+                  >
+                    My <span>Advantages</span>
+                  </h1>
+                </div>
+                <div class="row skills text-center">
+                  <div
+                    class="col-md-3 scroll-animation"
+                    data-animation="fade_from_left"
+                  >
+                    <div class="skill">
+                      <div class="skill-inner">
+                        <img
+                          src="/static/assetstest/images/figma.png"
+                          alt="Figma"
+                        />
+                        <h1 class="percent">92%</h1>
+                      </div>
+                      <p class="name">Figma</p>
+                    </div>
+                  </div>
+                  <div
+                    class="col-md-3 scroll-animation"
+                    data-animation="fade_from_bottom"
+                  >
+                    <div class="skill">
+                      <div class="skill-inner">
+                        <img
+                          src="/static/assetstest/images/framer.png"
+                          alt="Framer"
+                        />
+                        <h1 class="percent">85%</h1>
+                      </div>
+                      <p class="name">Framer</p>
+                    </div>
+                  </div>
+                  <div
+                    class="col-md-3 scroll-animation"
+                    data-animation="fade_from_top"
+                  >
+                    <div class="skill">
+                      <div class="skill-inner">
+                        <img
+                          src="/static/assetstest/images/webflow.png"
+                          alt="Webflow"
+                        />
+                        <h1 class="percent">80%</h1>
+                      </div>
+                      <p class="name">Webflow</p>
+                    </div>
+                  </div>
+                  <div
+                    class="col-md-3 scroll-animation"
+                    data-animation="fade_from_right"
+                  >
+                    <div class="skill">
+                      <div class="skill-inner">
+                        <img
+                          src="/static/assetstest/images/react.png"
+                          alt="React"
+                        />
+                        <h1 class="percent">90%</h1>
+                      </div>
+                      <p class="name">React</p>
+                    </div>
+                  </div>
+                  <div
+                    class="col-md-3 scroll-animation"
+                    data-animation="fade_from_left"
+                  >
+                    <div class="skill">
+                      <div class="skill-inner">
+                        <img
+                          src="/static/assetstest/images/wordpress.png"
+                          alt="WordPress"
+                        />
+                        <h1 class="percent">86%</h1>
+                      </div>
+                      <p class="name">WordPress</p>
+                    </div>
+                  </div>
+                  <div
+                    class="col-md-3 scroll-animation"
+                    data-animation="fade_from_bottom"
+                  >
+                    <div class="skill">
+                      <div class="skill-inner">
+                        <img
+                          src="/static/assetstest/images/laravel.png"
+                          alt="Laravel/PHP"
+                        />
+                        <h1 class="percent">70%</h1>
+                      </div>
+                      <p class="name">Laravel/PHP</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section
+            class="portfolio-area page-section scroll-to-page"
+            id="portfolio"
+          >
+            <div class="custom-container">
+              <div class="portfolio-content content-width">
+                <div class="section-header">
+                  <h4
+                    class="subtitle1 scroll-animation"
+                    data-animation="fade_from_bottom"
+                  >
+                    <i class="las la-grip-vertical"></i> Projects
+                  </h4>
+                  <h1
+                    class="scroll-animation"
+                    data-animation="fade_from_bottom"
+                  >
+                    Featured <span>Projects</span>
+                  </h1>
+                </div>
+                <div class="row portfolio-items">
+                  <div
+                    class="col-md-12 scroll-animation"
+                    data-animation="fade_from_bottom"
+                  >
+                    <div class="portfolio-item portfolio-full">
+                      <div class="portfolio-item-inner">
+                        <a
+                          href="/static/assetstest/images/portfolio2.jpg"
+                          data-lightbox="example-1"
+                        >
+                          <img
+                            src="/static/assetstest/images/portfolio2.jpg"
+                            alt="Portfolio"
+                          />
+                        </a>
+                        <ul class="portfolio-categories">
+                          <li>
+                            <a href="home1.html">Figma</a>
+                          </li>
+                          <li>
+                            <a href="home1.html">Framer</a>
+                          </li>
+                          <li>
+                            <a href="home1.html">WordPress</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <h2>
+                        <a href="home1.html"
+                          >Bureau - Architecture Studio Website</a
+                        >
+                      </h2>
+                    </div>
+                  </div>
+                  {% comment %} <div
+                    class="col-md-6 scroll-animation"
+                    data-animation="fade_from_left"
+                  >
+                    <div class="portfolio-item portfolio-half">
+                      <div class="portfolio-item-inner">
+                        <a
+                          href="/static/assetstest/images/portfolio2.jpg"
+                          data-lightbox="example-1"
+                        >
+                          <img
+                            src="/static/assetstest/images/portfolio2.jpg"
+                            alt="Portfolio"
+                          />
+                        </a>
+                        <img
+                          src="/static/assetstest/images/portfolio2.jpg"
+                          alt="Portfolio"
+                        />
+                        <ul class="portfolio-categories">
+                          <li>
+                            <a href="home1.html">WordPress</a>
+                          </li>
+                          <li>
+                            <a href="home1.html">Larevel/PHP</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <h2><a href="home1.html">Moonex WordPress Theme</a></h2>
+                    </div>
+                  </div> {% endcomment %}
+                  <div
+                    class="col-md-6 scroll-animation"
+                    data-animation="fade_from_right"
+                  >
+                    <div class="portfolio-item portfolio-half">
+                      <div class="portfolio-item-inner">
+                        <a
+                          href="/static/assetstest/images/portfolio1.jpg"
+                          data-lightbox="example-1"
+                        >
+                          <img
+                            src="/static/assetstest/images/portfolio1.jpg"
+                            alt="Portfolio"
+                          />
+                        </a>
+                        <ul class="portfolio-categories">
+                          <li>
+                            <a href="home1.html">Figma</a>
+                          </li>
+                          <li>
+                            <a href="home1.html">Webflow</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <h2><a href="home1.html">Taskly Dashboard</a></h2>
+                    </div>
+                  </div>
+                  <div
+                    class="col-md-6 scroll-animation"
+                    data-animation="fade_from_left"
+                  >
+                    <div class="portfolio-item portfolio-half">
+                      <div class="portfolio-item-inner">
+                        <a
+                          href="/static/assetstest/images/portfolio2.jpg"
+                          data-lightbox="example-1"
+                        >
+                          <img
+                            src="/static/assetstest/images/portfolio2.jpg"
+                            alt="Portfolio"
+                          />
+                        </a>
+                        <img
+                          src="/static/assetstest/images/portfolio2.jpg"
+                          alt="Portfolio"
+                        />
+                        <ul class="portfolio-categories">
+                          <li>
+                            <a href="home1.html">WordPress</a>
+                          </li>
+                          <li>
+                            <a href="home1.html">Larevel/PHP</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <h2><a href="home1.html">Moonex WordPress Theme</a></h2>
+                    </div>
+                  </div>
+                  <div
+                    class="col-md-6 scroll-animation"
+                    data-animation="fade_from_right"
+                  >
+                    <div class="portfolio-item portfolio-half">
+                      <div class="portfolio-item-inner">
+                        <a
+                          href="/static/assetstest/images/portfolio1.jpg"
+                          data-lightbox="example-1"
+                        >
+                          <img
+                            src="/static/assetstest/images/portfolio1.jpg"
+                            alt="Portfolio"
+                          />
+                        </a>
+                        <ul class="portfolio-categories">
+                          <li>
+                            <a href="home1.html">Figma</a>
+                          </li>
+                          <li>
+                            <a href="home1.html">Webflow</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <h2><a href="home1.html">Taskly Dashboard</a></h2>
+                    </div>
+                  </div>
+                  <!-- <div
+                    class="col-md-12 scroll-animation"
+                    data-animation="fade_from_bottom"
+                  >
+                    <div class="portfolio-item portfolio-half">
+                      <div class="portfolio-item-inner">
+                        <a
+                          href="/static/assetstest/images/portfolio4.jpg"
+                          data-lightbox="example-1"
+                        >
+                          <img
+                            src="/static/assetstest/images/portfolio4.jpg"
+                            alt="Portfolio"
+                          />
+                        </a>
+                        <ul class="portfolio-categories">
+                          <li>
+                            <a href="home1.html">Figma</a>
+                          </li>
+                          <li>
+                            <a href="home1.html">React</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <h2>
+                        <a href="home1.html"
+                          >Hinterland - Real Estate Site Redesign</a
+                        >
+                      </h2>
+                    </div>
+                  </div> -->
+                  <!-- <div
+                    class="col-md-12 scroll-animation"
+                    data-animation="fade_from_bottom"
+                  >
+                    <div class="portfolio-item portfolio-half">
+                      <div class="portfolio-item-inner">
+                        <a
+                          href="/static/assetstest/images/portfolio5.jpg"
+                          data-lightbox="example-1"
+                        >
+                          <img
+                            src="/static/assetstest/images/portfolio5.jpg"
+                            alt="Portfolio"
+                          />
+                        </a>
+                        <ul class="portfolio-categories">
+                          <li>
+                            <a href="home1.html">Framer</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <h2>
+                        <a href="home1.html">Lewis Portfolio Framer Template</a>
+                      </h2>
+                    </div>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </section>
+          <section
+            class="contact-area page-section scroll-content"
+            id="contact"
+          >
+            <div class="custom-container">
+              <div class="contact-content content-width">
+                <div class="section-header">
+                  <h4
+                    class="subtitle1 scroll-animation"
+                    data-animation="fade_from_bottom"
+                  >
+                    <i class="las la-dollar-sign"></i> contact
+                  </h4>
+                  <h1
+                    class="scroll-animation"
+                    data-animation="fade_from_bottom"
+                  >
+                    Let's Work <span>Together!</span>
+                  </h1>
+                </div>
+                <h3 class="scroll-animation" data-animation="fade_from_bottom">
+                  email id
+                </h3>
+                <p id="required-msg">* Marked fields are required to fill.</p>
+                <form
+                  class="contact-form scroll-animation"
+                  data-animation="fade_from_bottom"
+                  method="POST"
+                  action="https://wordpressriverthemes.com/HTML/drake/mailer.php"
+                >
+                  <div
+                    class="alert alert-success messenger-box-contact__msg"
+                    style="display: none"
+                    role="alert"
+                  >
+                    Your message was sent successfully.
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="input-group">
+                        <label for="full-name">full Name <sup>*</sup></label>
+                        <input
+                          type="text"
+                          name="full-name"
+                          id="full-name"
+                          placeholder="Your Full Name"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-group">
+                        <label for="email">Email <sup>*</sup></label>
+                        <input
+                          type="email"
+                          name="email"
+                          id="email"
+                          placeholder="Your email adress"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-group">
+                        <label for="phone-number"
+                          >phone <span>(optional)</span></label
+                        >
+                        <input
+                          type="text"
+                          name="phone-number"
+                          id="phone-number"
+                          placeholder="Your number phone"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="input-group">
+                        <label for="message">message</label>
+                        <textarea
+                          name="message"
+                          id="message"
+                          placeholder="Wrire your message here ..."
+                        ></textarea>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="input-group submit-btn-wrap">
+                        <button
+                          class="theme-btn"
+                          name="submit"
+                          type="submit"
+                          id="submit-form"
+                        >
+                          send message
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+    <script>
+      function copyText() {
+        var text = document.getElementById("myText").textContent;
+        
+        var tempInput = document.createElement("input");
+        tempInput.style.position = "absolute";
+        tempInput.style.left = "-1000px";
+        tempInput.value = text;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+        alert("Text copied to clipboard: " + text);
+      }
+    </script>
+    <script src="/static/assetstest/js/jquery.js"></script>
+    <script src="/static/assetstest/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/assetstest/js/owl.carousel.js"></script>
+    <script src="/static/assetstest/js/gsap.min.js"></script>
+    <script src="/static/assetstest/js/ScrollTrigger.min.js"></script>
+    <script src="/static/assetstest/js/ScrollToPlugin.min.js"></script>
+    <script src="/static/assetstest/js/lightbox.min.js"></script>
+    <script src="/static/assetstest/js/main.js"></script>
+    <script src="/static/assetstest/js/ajax-form.js"></script>
+    <script src="/static/assetstest/js/color.js"></script>
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js/vaafb692b2aea4879b33c060e79fe94621666317369993"
+      integrity="sha512-0ahDYl866UMhKuYcW078ScMalXqtFJggm7TmlUtp0UlD4eQk0Ixfnm5ykXKvGJNFjLMoortdseTfsRT8oCfgGA=="
+      data-cf-beacon='{"rayId":"7a978ca3fd412e39","version":"2023.2.0","r":1,"token":"52ad871770524b3e8ca1e53094efe67a","si":100}'
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
