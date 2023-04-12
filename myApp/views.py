@@ -9,6 +9,9 @@ from myApp.models import *
 from PIL import Image
 from io import BytesIO
 from django.views.decorators.csrf import csrf_exempt
+from django.urls import reverse
+from django.contrib.auth.hashers import check_password
+from django.contrib.auth import update_session_auth_hash
 
 # Create your views here.
 
@@ -57,7 +60,7 @@ def register_page(request):
         profile_model = Profile.objects.get(user=user_model)
         # messages.success(request, 'Account created successfully!')
         # return redirect("login")
-        return render(request,"firstsetting.html",{'profile_model':profile_model})
+        return redirect(reverse('settings', kwargs={'source': 'register'}))
     return render(request, "register.html")
 
 def logoutuser(request):
@@ -142,56 +145,92 @@ def dashboard(request):
 
 @csrf_exempt
 @login_required(login_url="login")
-def settings_page(request):
+def settings_page(request,source=None):
     profile_model = Profile.objects.get(user=request.user)
     user_model=User.objects.get(username=request.user.username)
-    if request.method == "POST":
-        profession=request.POST.get("profession")
-        mobilenumber=request.POST.get("mobilenumber")
-        if profile_model.firstsetting == True:
-            fname=request.POST.get("fname")
-            lname=request.POST.get("lname")
-            email=request.POST.get("email")
-            user_model.first_name = fname
-            if email:
-                user_model.email = email
-            user_model.last_name = lname
-        bio = request.POST.get("bio")
-        linkedin = request.POST.get("linkedin")
-        github = request.POST.get("github")
-        website = request.POST.get("website")
-        twitter = request.POST.get("twitter")
-        acadmicyear = request.POST.get("acadmicyear")
-        branch = request.POST.get("branch")
-        location = request.POST.get("location")
-        profileimg = request.FILES.get("profileimg")
-        # user_model = User.objects.get(username=request.user.username)
-        # profile_model = Profile.objects.get(user=user_model)
-        
-        
-        profile_model.profession = profession
-        profile_model.mobilenumber = mobilenumber
-        if linkedin:
-            profile_model.linkedin = linkedin
-        profile_model.bio = bio
-        if github:
-            profile_model.github = github
-        if website:
-            profile_model.website = website
-        if twitter:
+    if source is None  :
+        return render(request, "usersetting.html", {"profile_model": profile_model})
+    if source== "account" :
+        if request.method == "POST":
+            user_model.first_name = request.POST.get("fname")
+            user_model.last_name = request.POST.get("lname")
+            profile_model.mobilenumber = request.POST.get("mobilenumber")
+            profile_model.location = request.POST.get("location")
+            profile_model.profession = request.POST.get("profession")
+            profile_model.acadmicyear = request.POST.get("acadmicyear")
+            profile_model.branch = request.POST.get("branch")
+            profile_model.bio = request.POST.get("bio")
+            profileimg = request.FILES.get("profileimg")
+            if profileimg:
+                if profile_model.profileimg.url != "/media/profile_images/default-user.png":
+                    profile_model.profileimg.delete(save=False)
+                profile_model.profileimg = profileimg
+            user_model.save()
+            profile_model.save()
+            return render(request, "usersetting.html", {"profile_model": profile_model, "user_model": user_model})
+        return render(request, "usersetting.html", {"profile_model": profile_model, "user_model": user_model})
+    if source == "register":
+        if profile_model.firstsetting is True:
+            return render(request, "usersetting.html", {"profile_model": profile_model})
+        if request.method == "POST":
+            profileimg = request.FILES.get("profileimg")
+            profession=request.POST.get("profession")
+            bio = request.POST.get("bio")
+            location = request.POST.get("location")
+            mobilenumber=request.POST.get("mobilenumber")
+            acadmicyear = request.POST.get("acadmicyear")
+            branch = request.POST.get("branch")
+            twitter = request.POST.get("twitter")
+            github = request.POST.get("github")
+            linkedin = request.POST.get("linkedin")
+            website = request.POST.get("website")
+
+            if profileimg:
+                if profile_model.profileimg.url != "/media/profile_images/default-user.png":
+                    profile_model.profileimg.delete(save=False)
+                profile_model.profileimg = profileimg
+            profile_model.profession=profession
+            profile_model.bio = bio
+            profile_model.location = location
+            profile_model.mobilenumber=mobilenumber
+            profile_model.acadmicyear = acadmicyear
+            profile_model.branch = branch
             profile_model.twitter = twitter
-        profile_model.acadmicyear = acadmicyear
-        profile_model.branch = branch
-        profile_model.location = location
-        if profileimg:
-            print("Testing")
-            print(profile_model.profileimg.url) 
-            if profile_model.profileimg.url != "/media/profile_images/default-user.png":
-                profile_model.profileimg.delete(save=False)
-            profile_model.profileimg = profileimg
-        if profile_model.firstsetting == False:
+            profile_model.github = github
+            profile_model.linkedin = linkedin
+            profile_model.website = website
             profile_model.firstsetting = True
-        profile_model.save()
-        user_model.save()
-        return HttpResponse("<h2>Settings Updated</h2><br><a href='/settings'>Settigns</a>")
-    return render(request, "usersetting.html",{ 'profile_model': profile_model})
+            profile_model.save()
+            return HttpResponse("<h2>Profile Updated</h2><br><a href='/'>Home</a>")
+        return render(request, "firstsetting.html",{'profile_model':profile_model})
+    
+    if source== "security":
+        if request.method == "POST":
+            current_password = request.POST.get("current_password")
+            new_password = request.POST.get("new_password")
+            confirm_password = request.POST.get("confirm_password")
+
+            if check_password(current_password, request.user.password):
+            # Validate the new password
+                if new_password == confirm_password:
+                # Hash and save the new password
+                    request.user.set_password(new_password)
+                    request.user.save()
+                    update_session_auth_hash(request, request.user)  # Update the session to prevent logging out
+
+                    return HttpResponse("<h2>Password Updated</h2><br><a href='/'>Home</a>")
+                return HttpResponse("<h2>Passwords do not match</h2><br><a href='/'>Home</a>")
+            return HttpResponse("<h2>Current Password is incorrect</h2><br><a href='/'>Home</a>")
+        return render(request, "usersecurity.html", {'profile_model': profile_model, 'user_model': user_model})
+    
+    if source == "connections":
+        if request.method == "POST":
+            profile_model.linkedin = request.POST.get("linkedin")
+            profile_model.github = request.POST.get("github")
+            profile_model.twitter = request.POST.get("twitter")
+            profile_model.website = request.POST.get("website")
+            profile_model.save()
+            return render(request, "userconnection.html", {'profile_model': profile_model, 'user_model': user_model})
+        return render(request, "userconnection.html",{'profile_model':profile_model,'user_model':user_model})
+
+    return render(request, "settings.html",{'profile_model':profile_model,'user_model':user_model})

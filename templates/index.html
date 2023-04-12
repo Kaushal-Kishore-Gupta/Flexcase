@@ -166,7 +166,7 @@
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="dashboard"><i class="fas fa-sliders-h fa-fw"></i>
                   {{request.user.first_name}} {{request.user.last_name}}</a></li>
-              <li><a class="dropdown-item" href="settings"><i class="fas fa-cog fa-fw"></i> Settings</a></li>
+              <li><a class="dropdown-item" href="{% url  'settings' source="account"%}"><i class="fas fa-cog fa-fw"></i> Settings</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>

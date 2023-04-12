@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" class="light-style layout-navbar-fixed layout-menu-fixed " dir="ltr" data-theme="theme-default"
     data-assets-path="../static/assets/">
@@ -21,28 +22,29 @@
         rel="stylesheet">
 
     <!-- Icons -->
-    <link rel="stylesheet" href="../static/assets/vendor/fonts/boxicons.css" />
-    <link rel="stylesheet" href="../static/assets/vendor/fonts/fontawesome.css" />
-    <link rel="stylesheet" href="../static/assets/vendor/fonts/flag-icons.css" />
+    <link rel="stylesheet" href="{% static 'assets/vendor/fonts/boxicons.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/vendor/fonts/fontawesome.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/vendor/fonts/flag-icons.css' %}" />
+
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="../static/assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="../static/assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="../static/assets/css/demo.css" />
+    <link rel="stylesheet" href="{% static 'assets/vendor/css/rtl/core.css' %}" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="{% static 'assets/vendor/css/rtl/theme-default.css' %}" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="{% static 'assets/css/demo.css' %}" />
 
-    <!-- Vendors CSS -->
-    <link rel="stylesheet" href="../static/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-    <link rel="stylesheet" href="../static/assets/vendor/libs/typeahead-js/typeahead.css" />
-    <link rel="stylesheet" href="../static/assets/vendor/libs/select2/select2.css" />
-    <link rel="stylesheet" href="../static/assets/vendor/libs/formvalidation/dist/css/formValidation.min.css" />
-    <link rel="stylesheet" href="../static/assets/vendor/libs/animate-css/animate.css" />
-    <link rel="stylesheet" href="../static/assets/vendor/libs/sweetalert2/sweetalert2.css" />
+<!-- Vendors CSS -->
+    <link rel="stylesheet" href="{% static 'vendor/libs/perfect-scrollbar/perfect-scrollbar.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendor/libs/typeahead-js/typeahead.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendor/libs/select2/select2.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendor/libs/formvalidation/dist/css/formValidation.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendor/libs/animate-css/animate.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendor/libs/sweetalert2/sweetalert2.css' %}" />
 
     <!-- Page CSS -->
 
     <!-- Helpers -->
-    <script src="../static/assets/vendor/js/helpers.js"></script>
-    <script src="../static/assets/js/config.js"></script>
+    <script src="{% static 'assets/vendor/js/helpers.js' %}"></script>
+    <script src="{% static 'assets/js/config.js' %}"></script>
 </head>
 
 <body>
@@ -163,13 +165,13 @@
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="usersecurity.html" class="menu-link">
+                        <a href="{% url  'settings' source="security"%}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-lock-alt"></i>
                             <div data-i18n="Security">Security</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="userconnection.html" class="menu-link">
+                        <a href="{% url  'settings' source="connections"%}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-link-alt"></i>
                             <div data-i18n="Connections">Connections</div>
                         </a>
@@ -291,9 +293,9 @@
                                 <ul class="nav nav-pills flex-column flex-md-row mb-3">
                                     <li class="nav-item"><a class="nav-link active" href="javascript:void(0);"><i
                                                 class="bx bx-user me-1"></i> Account</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="usersecurity.html"><i
+                                    <li class="nav-item"><a class="nav-link" href="{%url 'settings' source="security"%}"><i
                                                 class="bx bx-lock-alt me-1"></i> Security</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="userconnection.html"><i
+                                    <li class="nav-item"><a class="nav-link" href="{% url  'settings' source="connections"%}"><i
                                                 class="bx bx-link-alt me-1"></i> Connections</a></li>
                                 </ul>
                                 <div class="card mb-4">
@@ -327,11 +329,11 @@
                                                 <div class="mb-3 col-md-6">
                                                     <label for="firstName" class="form-label">First Name</label>
                                                     <input class="form-control" type="text" id="firstName"
-                                                    value="{{request.user.first_name}}" name="fname" autofocus />
+                                                    value="{{user_model.first_name}}" name="fname" autofocus />
                                                 </div>
                                                 <div class="mb-3 col-md-6">
                                                     <label for="lastName" class="form-label">Last Name</label>
-                                                    <input class="form-control" type="text" value="{{request.user.last_name}}" name="lname"
+                                                    <input class="form-control" type="text" value="{{user_model.last_name}}" name="lname"
                                                         id="lastName"  />
                                                 </div>
                                                 <div class="mb-3 col-md-6">
