@@ -1,7 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en" class="light-style layout-navbar-fixed layout-menu-fixed " dir="ltr" data-theme="theme-default"
-    data-assets-path="../static/assets/">
+    data-assets-path="{% static 'assets/' %}">
 
 <head>
     <meta charset="utf-8" />
@@ -12,7 +12,7 @@
 
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../static/assets/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/img/favicon/favicon.ico' %}" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,12 +33,12 @@
     <link rel="stylesheet" href="{% static 'assets/css/demo.css' %}" />
 
 <!-- Vendors CSS -->
-    <link rel="stylesheet" href="{% static 'vendor/libs/perfect-scrollbar/perfect-scrollbar.css' %}" />
-    <link rel="stylesheet" href="{% static 'vendor/libs/typeahead-js/typeahead.css' %}" />
-    <link rel="stylesheet" href="{% static 'vendor/libs/select2/select2.css' %}" />
-    <link rel="stylesheet" href="{% static 'vendor/libs/formvalidation/dist/css/formValidation.min.css' %}" />
-    <link rel="stylesheet" href="{% static 'vendor/libs/animate-css/animate.css' %}" />
-    <link rel="stylesheet" href="{% static 'vendor/libs/sweetalert2/sweetalert2.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/vendor/libs/typeahead-js/typeahead.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/vendor/libs/select2/select2.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/vendor/libs/formvalidation/dist/css/formValidation.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/vendor/libs/animate-css/animate.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/vendor/libs/sweetalert2/sweetalert2.css' %}" />
 
     <!-- Page CSS -->
 
@@ -301,30 +301,31 @@
                                 <div class="card mb-4">
                                     <h5 class="card-header">Profile Details</h5>
                                     <!-- Account -->
+                                    
+                                    
                                     <div class="card-body">
-                                        <div class="d-flex align-items-start align-items-sm-center gap-4">
-                                            <img src="{{profile_model.profileimg.url}}" alt="user-avatar"
-                                                class="d-block rounded" height="100" width="100" id="uploadedAvatar" />
-                                            <div class="button-wrapper">
-                                                <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
-                                                    <span class="d-none d-sm-block">Upload new photo</span>
-                                                    <i class="bx bx-upload d-block d-sm-none"></i>
-                                                    <input id="file" type="file" name="profileimg" class="account-file-input" hidden
-                                                        accept="image/png, image/jpeg" />
-                                                </label>
-                                                <button type="button"
-                                                    class="btn btn-label-secondary account-image-reset mb-4">
-                                                    <i class="bx bx-reset d-block d-sm-none"></i>
-                                                    <span class="d-none d-sm-block">Reset</span>
-                                                </button>
-
-                                                <p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
+                                        <form id="formAccountSettings" method="POST" enctype="multipart/form-data">
+                                            <div class="card-body">
+                                                <div class="d-flex align-items-start align-items-sm-center gap-4">
+                                                    <img src="{{profile_model.profileimg.url}}" alt="user-avatar"
+                                                        class="d-block rounded" height="100" width="100" id="uploadedAvatar" />
+                                                    <div class="button-wrapper">
+                                                        <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
+                                                            <span class="d-none d-sm-block">Upload new photo</span>
+                                                            <i class="bx bx-upload d-block d-sm-none"></i>
+                                                            <input id="upload" type="file" name="profileimg" class="account-file-input" hidden
+                                                                accept="image/png, image/jpeg" />
+                                                        </label>
+                                                        <button type="button"
+                                                            class="btn btn-label-secondary account-image-reset mb-4">
+                                                            <i class="bx bx-reset d-block d-sm-none"></i>
+                                                            <span class="d-none d-sm-block">Reset</span>
+                                                        </button>
+        
+                                                        <p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <hr class="my-0">
-                                    <div class="card-body">
-                                        <form id="formAccountSettings" method="POST" >
                                             <div class="row">
                                                 <div class="mb-3 col-md-6">
                                                     <label for="firstName" class="form-label">First Name</label>
@@ -460,32 +461,32 @@
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
-    <script src="../static/assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="../static/assets/vendor/libs/popper/popper.js"></script>
-    <script src="../static/assets/vendor/js/bootstrap.js"></script>
-    <script src="../static/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="{% static 'assets/vendor/libs/jquery/jquery.js' %}"></script>
+<script src="{% static 'assets/vendor/libs/popper/popper.js' %}"></script>
+<script src="{% static 'assets/vendor/js/bootstrap.js' %}"></script>
+<script src="{% static 'assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js' %}"></script>
 
-    <script src="../static/assets/vendor/libs/hammer/hammer.js"></script>
-    <script src="../static/assets/vendor/libs/i18n/i18n.js"></script>
-    <script src="../static/assets/vendor/libs/typeahead-js/typeahead.js"></script>
+<script src="{% static 'assets/vendor/libs/hammer/hammer.js' %}"></script>
+<script src="{% static 'assets/vendor/libs/i18n/i18n.js' %}"></script>
+<script src="{% static 'assets/vendor/libs/typeahead-js/typeahead.js' %}"></script>
 
-    <script src="../static/assets/vendor/js/menu.js"></script>
-    <!-- endbuild -->
+<script src="{% static 'assets/vendor/js/menu.js' %}"></script>
 
-    <!-- Vendors JS -->
-    <script src="../static/assets/vendor/libs/select2/select2.js"></script>
-    <script src="../static/assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js"></script>
-    <script src="../static/assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js"></script>
-    <script src="../static/assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js"></script>
-    <script src="../static/assets/vendor/libs/cleavejs/cleave.js"></script>
-    <script src="../static/assets/vendor/libs/cleavejs/cleave-phone.js"></script>
-    <script src="../static/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+<!-- Vendors JS -->
+<script src="{% static 'assets/vendor/libs/select2/select2.js' %}"></script>
+<script src="{% static 'assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js' %}"></script>
+<script src="{% static 'assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js' %}"></script>
+<script src="{% static 'assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js' %}"></script>
+<script src="{% static 'assets/vendor/libs/cleavejs/cleave.js' %}"></script>
+<script src="{% static 'assets/vendor/libs/cleavejs/cleave-phone.js' %}"></script>
+<script src="{% static 'assets/vendor/libs/sweetalert2/sweetalert2.js' %}"></script>
 
-    <!-- Main JS -->
-    <script src="../static/assets/js/main.js"></script>
+<!-- Main JS -->
+<script src="{% static 'assets/js/main.js' %}"></script>
 
-    <!-- Page JS -->
-    <script src="../static/assets/js/pages-account-settings-account.js"></script>
+<!-- Page JS -->
+<script src="{% static 'assets/js/pages-account-settings-account.js' %}"></script>
+
 
 </body>
 

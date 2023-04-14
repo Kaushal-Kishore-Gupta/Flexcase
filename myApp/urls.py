@@ -9,9 +9,11 @@ urlpatterns = [
     path("hero/", views.hero_page, name="hero"),
     path("user/<str:source>/settings", views.settings_page, name="settings"),
     path("upload/",views.upload,name="upload"),
-    path("dashboard/",views.dashboard,name="dashboard"),
+    path("user/dashboard/",views.dashboard,name="dashboard"),
     path("profile/<str:pk>/",views.profile,name="profile"),
     path("post/",views.post,name="post"),
     path("post/<uuid:pk>/delete/",views.delete_post,name="delete_post"),
     path("search/",views.search,name="search"),
+    path("test/",views.testp,name="tesp"),
+    path("user/dashboard/my-projects/",views.my_projects,name="my_projects"),
 ]

@@ -15,6 +15,8 @@ from django.contrib.auth import update_session_auth_hash
 
 # Create your views here.
 
+def testp(request):
+    return render(request, "profiletest.html")
 
 def home_page(request):
     posts = Post.objects.order_by('?')
@@ -141,7 +143,13 @@ def upload(request):
 def dashboard(request):
     posts = Post.objects.filter(user=request.user).order_by('-date_created')
     profile_model = Profile.objects.get(user=request.user)
-    return render(request, "dashboardtest.html", {"posts": posts , "profile_model":profile_model})
+    return render(request, "dashboard.html", {"posts": posts , "profile_model":profile_model})
+
+@login_required(login_url="login")
+def my_projects(request):
+    posts = Post.objects.filter(user=request.user).order_by('-date_created')
+    profile_model = Profile.objects.get(user=request.user)
+    return render(request, "myprojects.html", {"posts": posts , "profile_model":profile_model})
 
 @csrf_exempt
 @login_required(login_url="login")
