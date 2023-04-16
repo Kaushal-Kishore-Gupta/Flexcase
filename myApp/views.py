@@ -16,7 +16,7 @@ from django.contrib.auth import update_session_auth_hash
 # Create your views here.
 
 def testp(request):
-    return render(request, "profiletest.html")
+    return render(request, "settings.html")
 
 def home_page(request):
     posts = Post.objects.order_by('?')
@@ -109,6 +109,7 @@ def delete_post(request, pk):
         messages.error(request, 'You are not authorized to delete this post.')
     return redirect('dashboard')
 
+@csrf_exempt 
 @login_required(login_url="login")
 def upload(request):
     if request.method == "POST":
