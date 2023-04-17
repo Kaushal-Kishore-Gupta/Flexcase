@@ -10,6 +10,7 @@ from PIL import Image
 from io import BytesIO
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
+from datetime import datetime
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth import update_session_auth_hash
 
@@ -144,7 +145,19 @@ def upload(request):
 def dashboard(request):
     posts = Post.objects.filter(user=request.user).order_by('-date_created')
     profile_model = Profile.objects.get(user=request.user)
-    return render(request, "dashboard.html", {"posts": posts , "profile_model":profile_model})
+    name = profile_model.user.get_full_name() or profile_model.user.username
+    now = datetime.now()
+    first_name = request.user.first_name
+    time = now.strftime("%H:%M:%S")
+    if 5 <= now.hour < 12:
+        greeting = f"Good Morning, {first_name}! ☕️"
+    elif 12 <= now.hour < 16:
+        greeting = f"Good Afternoon, {first_name}! 🌞"
+    elif 16 <= now.hour < 22:
+        greeting = f"Good Evening, {first_name}! 🌇"
+    else:
+        greeting = f"Still awake, {first_name}?💤"
+    return render(request, "dashboard.html", {"posts": posts , "profile_model":profile_model, "name": name, "greeting": greeting})
 
 @login_required(login_url="login")
 def my_projects(request):
