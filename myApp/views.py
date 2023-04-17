@@ -160,7 +160,7 @@ def dashboard(request):
     name = profile_model.user.get_full_name() or profile_model.user.username
     now = datetime.now()
     first_name = request.user.first_name
-    time = now.strftime("%H:%M:%S")
+    # time = now.strftime("%H:%M:%S")
     if 5 <= now.hour < 12:
         greeting = f"Good Morning, {first_name}! ☕️"
     elif 12 <= now.hour < 16:
