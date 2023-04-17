@@ -252,7 +252,7 @@
                                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
                                     data-bs-toggle="dropdown">
                                     <div class="avatar avatar-online">
-                                        <img src="./assets/img/avatars/1.png" alt
+                                        <img src="{% static 'assets/img/avatars/1.png' %}" alt
                                             class="w-px-40 h-auto rounded-circle" />
                                     </div>
                                 </a>
@@ -262,7 +262,7 @@
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0 me-3">
                                                     <div class="avatar avatar-online">
-                                                        <img src="./assets/img/avatars/1.png" alt
+                                                        <img src="{% static 'assets/img/avatars/1.png' %}" alt
                                                             class="w-px-40 h-auto rounded-circle" />
                                                     </div>
                                                 </div>
@@ -321,16 +321,16 @@
                         <h4 class="fw-bold py-3 mb-4">
                             <span class="text-muted fw-light">Upload Project</span>
                         </h4>
-
-                        <!-- Default -->
+                     {% comment %} <form action="" method="POST" enctype="multipart/form-data"> {% endcomment %}
+   <!-- Default -->
                         <div class="card mb-4">
                             <h5 class="card-header"></h5>
-                            <form class="card-body">
+                            <form class="card-body" id="form1">
                                 <h5>1. Project Details</h5>
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <label class="form-label" for="title">Title</label>
-                                        <input type="text" id="title" class="form-control" placeholder="Flexcase" />
+                                        <input type="text" id="title" class="form-control" placeholder="Flexcase" name="title" />
                                     </div>
                                     <div class="col-sm-6">
                                         <label for="techStack" class="form-label">Tech Stack</label>
@@ -343,12 +343,13 @@
                                         <input type="text" id="shordesc"
                                             class="form-control bootstrap-maxlength-example"
                                             placeholder="Project Tagline / Short Description | Maximum Limit 150"
+                                            name="short_description"
                                             maxlength="150" />
                                     </div>
                                     <div class="col-12">
                                         <label class="form-label" for="longdesc">Long Description</label>
                                         <textarea id="autosize-demo" rows="6"
-                                            class="form-control bootstrap-maxlength-example" maxlength="2000"
+                                            class="form-control bootstrap-maxlength-example" maxlength="2000" name="long_description"
                                             placeholder="Long Description of the project | Maximum Limit 2000"></textarea>
                                     </div>
                                 </div>
@@ -361,7 +362,7 @@
                                 <div class="card">
                                     <h5 class="card-header">2. Project Screenshots 📸</h5>
                                     <div class="card-body">
-                                        <form action="https://demos.themeselection.com/upload"
+                                        <form enctype="multipart/form-data"
                                             class="dropzone needsclick" id="dropzone-multi">
                                             <div class="dz-message needsclick">
                                                 Drop files here or click to upload
@@ -369,7 +370,7 @@
                                                     Project Images.) <small>(Max File Size : 5MB)</small></span>
                                             </div>
                                             <div class="fallback">
-                                                <input name="file" type="file" />
+                                                <input name="images" type="file" />
                                             </div>
                                         </form>
                                     </div>
@@ -379,43 +380,43 @@
                         <br>
                         <div class="card mb-4">
                             <h5 class="card-header"></h5>
-                            <form class="card-body">
+                            <form class="card-body" id="form2">
                                 <h5>3. Project Links</h5>
                                 <div class="row">
                                     <div class="mb-3 col-md-6 form-password-toggle">
                                         <label class="form-label" for="youtube">Youtube Video</label>
-                                        <input type="text" id="linkedin" class="form-control"
-                                            placeholder="Youtube Video Embeded Link" />
+                                        <input type="text" id="linkedin" class="form-control" name="youtube_link"
+                                            placeholder="Youtube Video Embeded Link"  />
                                     </div>
                                     <div class="mb-3 col-md-6 form-password-toggle">
                                         <label class="form-label" for="Deployed">Live Website</label>
-                                        <input type="text" id="Deployed" class="form-control"
+                                        <input type="text" id="Deployed" class="form-control" name="website_link"
                                             placeholder="https://flexcase.tech" />
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="mb-3 col-md-6 form-password-toggle">
                                         <label class="form-label" for="github">GitHub</label>
-                                        <input type="text" id="github" class="form-control"
+                                        <input type="text" id="github" class="form-control" name="github_link"
                                             placeholder="https://github.com/flexcase" />
                                     </div>
 
 
                                     <div class="mb-3 col-md-6 form-password-toggle">
                                         <label class="form-label" for="custom">Custom Link</label>
-                                        <input type="text" id="custom" class="form-control"
+                                        <input type="text" id="custom" class="form-control" name="custom_link"
                                             placeholder="https://customlink.com" />
                                     </div>
                                 </div>
                             </form>
                         </div>
                         <div class="pt-4">
-                            <button type="submit" class="btn btn-primary me-sm-3 me-1">Submit</button>
+                            <button type="submit" class="btn btn-primary me-sm-3 me-1 submit" onclick="submitForms()">Submit</button>
                             <button type="reset" class="btn btn-label-secondary">Cancel</button>
                         </div>
 
                         <!-- Modern -->
-                        <div class="bs-toast toast fade show bg-success" role="alert" aria-live="assertive"
+                        {% comment %} <div class="bs-toast toast fade show bg-success" role="alert" aria-live="assertive"
                             aria-atomic="true">
                             <div class="toast-header">
                                 <i class='bx bx-bell me-2'></i>
@@ -427,7 +428,7 @@
                             <div class="toast-body">
                                 Project has been successfully uploaded.
                             </div>
-                        </div>
+                        </div> {% endcomment %}
 
 
                     </div>
@@ -475,6 +476,31 @@
     <!-- build:js assets/vendor/js/core.js -->
     {% comment %} <script src="{% static 'assets/js/forms-tagify.js' %}"></script> {% endcomment %}
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify@4.1.1/dist/tagify.min.js"></script>
+    <script>
+        function submitForms() {
+            // Get references to the forms
+            var form1 = document.getElementById('form1');
+            var dropzoneMulti = document.getElementById('dropzone-multi');
+            var form2 = document.getElementById('form2');
+          
+            // Get the form data
+            var formData1 = new FormData(form1);
+            var formData2 = new FormData(dropzoneMulti);
+            var formData3 = new FormData(form2);
+          
+            // Combine the form data
+            var formDataCombined = new FormData();
+            formDataCombined.append('form1', formData1);
+            formDataCombined.append('dropzoneMulti', formData2);
+            formDataCombined.append('form2', formData3);
+          
+            // Submit the combined form data
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '');
+            xhr.send(formDataCombined);
+          }
+          
+    </script>
     <script>
         var input = document.querySelector('input[name="tags"]');
 
