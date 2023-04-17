@@ -48,17 +48,11 @@
     <div class="layout-wrapper layout-content-navbar  ">
         <div class="layout-container">
 
-
-
-
-
-
-
             <!-- Menu -->
 
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
-                    <a href="index.html" class="app-brand-link">
+                    <a href="{% url 'home_page' %}" class="app-brand-link">
                         <span class="app-brand-logo demo">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                 width="50" zoomAndPan="magnify" viewBox="0 0 37.5 37.499999" height="50"
@@ -120,13 +114,13 @@
                         <span class="menu-header-text">Projects</span>
                     </li>
                     <li class="menu-item">
-                        <a href="uploadproject.html" class="menu-link">
+                        <a href="{% url 'upload' %}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-cloud-upload"></i>
                             <div>Upload Project</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href={% url 'my_projects' %} class="menu-link">
+                        <a href="{% url 'my_projects' %}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-code"></i>
                             <div>My Projects</div>
                         </a>
@@ -153,7 +147,7 @@
                         </a>
                     <li class="menu-item">
                     <li class="menu-item">
-                        <a href="usersetting.html" class="menu-link">
+                        <a href="{% url 'settings' source='account' %}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-spreadsheet"></i>
                             <div data-i18n="Account">Account</div>
                         </a>
@@ -171,7 +165,7 @@
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="logout.html" class="menu-link">
+                        <a href="{% url 'logout' %}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-log-out"></i>
                             <div data-i18n="Logout">Logout</div>
                         </a>

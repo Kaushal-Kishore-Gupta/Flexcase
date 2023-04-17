@@ -24,6 +24,7 @@ class Profile(models.Model):
     location=models.CharField(max_length=100,blank=True)
     mobilenumber=models.CharField(max_length=10,blank=True)
     view_count=models.IntegerField(default=0)
+    # total_views = models.IntegerField(default=0)
     updated_at=models.DateTimeField(auto_now=True)
 
     def __str__(self):

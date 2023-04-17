@@ -67,7 +67,7 @@
 
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
-                    <a href="index.html" class="app-brand-link">
+                    <a href="{% url 'home_page' %}" class="app-brand-link">
                         <span class="app-brand-logo demo">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                 width="50" zoomAndPan="magnify" viewBox="0 0 37.5 37.499999" height="50"
@@ -438,7 +438,7 @@
     const postTitle = document.getElementById('post-title');
   
     // Check if the text content of the post title is longer than 50 characters
-    {% comment %} if (postTitle.textContent.length > 60) {
+    // {% comment %} if (postTitle.textContent.length > 60) {
       // Create a new marquee element
       const marqueeElement = document.createElement('marquee');
       marqueeElement.setAttribute('behavior', 'scroll');
@@ -447,7 +447,7 @@
       
       // Replace the post title element with the new marquee element
       postTitle.parentNode.replaceChild(marqueeElement, postTitle);
-    } {% endcomment %}
+    // } {% endcomment %}
   </script>
 
 </body>
