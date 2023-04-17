@@ -107,7 +107,7 @@ def delete_post(request, pk):
         messages.success(request, 'Your post has been deleted.')
     else:
         messages.error(request, 'You are not authorized to delete this post.')
-    return redirect('dashboard')
+    return redirect('my_projects')
 
 @csrf_exempt 
 @login_required(login_url="login")
@@ -138,7 +138,7 @@ def upload(request):
         new_post=Post(user=user,user_profile=user_profile,title=title,description=description,date_started=date_started,tech_stack=tech_stack,github_link=github_link,website_link=website_link,image_1=image_1,image_2=image_2,image_3=image_3,post_thumbnail=post_thumbnail)
         new_post.save()
         return HttpResponse("<h2>Post Updated</h2><br><a href='/'>Home</a>")
-    return render(request, "upload.html")
+    return render(request, "upload2.html")
 
 @login_required(login_url="login")
 def dashboard(request):

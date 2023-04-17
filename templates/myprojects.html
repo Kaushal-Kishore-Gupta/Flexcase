@@ -292,7 +292,7 @@
 
                         <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
                             <div class="col" style="height: min-content;">
-                                <a href="uploadproject.html">
+                                <a href={% url 'upload' %}>
                                     <div class="card h-100">
 
                                         <div class="card-body" style="padding: 1.5rem">
@@ -321,7 +321,7 @@
                                         <div class="d-flex align-items-center mb-3">
                                             <a href="javascript:void(0);" class="d-flex align-items-center">
                                                 <div class="me-2 text-body h5 mb-0 myprojectstitlediv" id="post-title">
-                                                    Project 1Project 1Project 1Project 1Project 1Project 1Project 1Project 1Project 1Project 1Project 1Project 1
+                                                    {{ post.title }}
                                                   </div>
                                             </a>
                                             <div class="ms-auto">
@@ -348,7 +348,7 @@
                                                                     <hr class="dropdown-divider">
                                                                 </li>
                                                                 <li><a class="dropdown-item text-danger"
-                                                                        href="javascript:void(0);">Delete Project</a>
+                                                                        href={% url 'delete_post' pk=post.id %}>Delete Project</a>
                                                                 </li>
                                                             </ul>
                                                         </div>

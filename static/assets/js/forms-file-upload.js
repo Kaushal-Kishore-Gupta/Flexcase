@@ -1,4 +1,6 @@
-"use strict";!function(){var a=`<div class="dz-preview dz-file-preview">
+"use strict";
+!(function () {
+  var a = `<div class="dz-preview dz-file-preview">
 <div class="dz-details">
   <div class="dz-thumbnail">
     <img data-dz-thumbnail>
@@ -13,4 +15,19 @@
   <div class="dz-filename" data-dz-name></div>
   <div class="dz-size" data-dz-size></div>
 </div>
-</div>`;new Dropzone("#dropzone-basic",{previewTemplate:a,parallelUploads:1,maxFilesize:5,addRemoveLinks:!0,maxFiles:1}),new Dropzone("#dropzone-multi",{previewTemplate:a,parallelUploads:1,maxFilesize:5,addRemoveLinks:!0})}();
+</div>`;
+  // new Dropzone("#dropzone-basic", {
+  //   previewTemplate: a,
+  //   parallelUploads: 1,
+  //   maxFilesize: 5,
+  //   addRemoveLinks: !0,
+  //   maxFiles: 1,
+  // }),
+    new Dropzone("#dropzone-multi", {
+      previewTemplate: a,
+      parallelUploads: 1,
+      maxFiles: 3,
+      maxFilesize: 5,
+      addRemoveLinks: !0,
+    });
+})();
