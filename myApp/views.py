@@ -141,7 +141,7 @@ def upload(request):
         new_post=Post(user=user,user_profile=user_profile,title=title,short_description=short_description,long_description=long_description,tech_stack=tech_stack,github_link=github_link,website_link=website_link,youtube_link=youtube_link,custom_link=custom_link,image_1=image_1,image_2=image_2,image_3=image_3,post_thumbnail=post_thumbnail)
         new_post.save()
         return HttpResponse("<h2>Post Updated</h2><br><a href='/'>Home</a>")
-    return render(request, "upload2.html")
+    return render(request, "upload.html")
 
 @login_required(login_url="login")
 def dashboard(request):
