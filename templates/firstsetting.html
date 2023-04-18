@@ -221,7 +221,7 @@
                     <button class="btn btn-primary btn-prev"> <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
                       <span class="align-middle d-sm-inline-block d-none">Previous</span>
                     </button>
-                    <button type="submit" class="btn btn-success btn-next btn-submit">Submit</button>
+                    <button type="submit" class="btn btn-success btn-next btn-submit" onlcick="FormSubmit()">Submit</button>
                   </div>
                 </div>
                 <!--/ Credit Card Details -->
@@ -235,8 +235,16 @@
   </div>
 </div>
 
+<script>
+  // Check selected custom option
+  window.Helpers.initCustomOptionCheck();
+  </script>
+  <script>
 
-
+  function FormSubmit() {
+    document.getElementById("multiStepsForm").submit();
+  }
+</script>
 <!-- / Content -->
 
   <!-- Core JS -->
