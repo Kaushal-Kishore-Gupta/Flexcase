@@ -113,11 +113,9 @@ def delete_post(request, pk):
 @csrf_exempt 
 @login_required(login_url="login")
 def upload(request):
-    profile_model = Profile.objects.get(user=request.user)
-    user_model=User.objects.get(username=request.user.username)
     if request.method == "POST":
-        user = request.user
-        user_profile = Profile.objects.get(user=user)
+        user=request.user
+        user_profile=Profile.objects.get(user=user)
         title = request.POST.get("title")
         short_description = request.POST.get("short_description")
         long_description = request.POST.get("long_description")
@@ -127,33 +125,23 @@ def upload(request):
         website_link = request.POST.get("website_link")
         youtube_link = request.POST.get("youtube_link")
         custom_link = request.POST.get("custom_link")
-        post_thumbnail = None
-
-        images = request.FILES.getlist("images") # get list of uploaded files
-        for index, image in enumerate(images):
-            # Resize the images
-            if index == 0:
-                post_thumbnail = image
-                post_thumbnail_file = BytesIO(post_thumbnail.read())
-                post_thumbnail_image = Image.open(post_thumbnail_file)
-                post_thumbnail_image.thumbnail((450, 338))
-                post_thumbnail_file = BytesIO()
-                post_thumbnail_image.save(post_thumbnail_file, post_thumbnail_image.format)
-                post_thumbnail_file.seek(0)
-                post_thumbnail = InMemoryUploadedFile(post_thumbnail_file, 'ImageField', post_thumbnail.name, post_thumbnail.content_type, None, None)
-                image_1 = image
-            # Save other images
-            elif index in [1, 2]:
-                if index == 1:
-                    image_2 = image
-                elif index == 2:
-                    image_3 = image
-
-        new_post = Post(user=user, user_profile=user_profile, title=title, short_description=short_description, long_description=long_description, tech_stack=tech_stack, github_link=github_link, website_link=website_link,youtube_link=youtube_link, image_1=image_1, image_2=image_2, image_3=image_3, custom_link=custom_link, post_thumbnail=post_thumbnail)
-
+        image_1 = request.FILES.get("image_1")
+        image_2 = request.FILES.get("image_2")
+        image_3 = request.FILES.get("image_3")
+        post_thumbnail=image_1
+        # Resize the images
+        if post_thumbnail:
+            post_thumbnail_file = BytesIO(post_thumbnail.read())
+            post_thumbnail_image = Image.open(post_thumbnail_file)
+            post_thumbnail_image.thumbnail((450, 338))
+            post_thumbnail_file = BytesIO()
+            post_thumbnail_image.save(post_thumbnail_file, post_thumbnail_image.format)
+            post_thumbnail_file.seek(0)
+            post_thumbnail = InMemoryUploadedFile(post_thumbnail_file, 'ImageField', post_thumbnail.name, post_thumbnail.content_type, None, None)
+        new_post=Post(user=user,user_profile=user_profile,title=title,short_description=short_description,long_description=long_description,tech_stack=tech_stack,github_link=github_link,website_link=website_link,youtube_link=youtube_link,custom_link=custom_link,image_1=image_1,image_2=image_2,image_3=image_3,post_thumbnail=post_thumbnail)
         new_post.save()
         return HttpResponse("<h2>Post Updated</h2><br><a href='/'>Home</a>")
-    return render(request, "upload2.html",{"profile_model": profile_model, "user_model": user_model})
+    return render(request, "upload2.html")
 
 @login_required(login_url="login")
 def dashboard(request):

@@ -79,19 +79,31 @@
             width: 100%;
             height: 180px;
             background-position: center center;
-          background:url(http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg);
           background-color:#fff;
             background-size: cover;
           background-repeat:no-repeat;
             display: inline-block;
-          box-shadow:0px -3px 6px 2px rgba(0,0,0,0.2);
+          {% comment %} box-shadow:0px -3px 6px 2px rgba(0,0,0,0.2); {% endcomment %}
+          border : 2px solid #E7E7FF;
+          border-top-left-radius: 0.5rem;
+          border-top-right-radius: 0.5rem;
         }
-        .btn-primary
+        .btn-primaryupload
         {
           display:block;
           border-radius:0px;
           box-shadow:0px 4px 6px 2px rgba(0,0,0,0.2);
-          margin-top:-5px;
+          background-color: #696CFF !important;
+          border-color: #696CFF !important;
+          color : #fff;
+          margin-top:-8px;
+          border-bottom-left-radius: 0.5rem;
+          border-bottom-right-radius: 0.5rem;
+        }
+        .btn-primaryupload:hover{
+            background-color: #E7E7FF !important;
+            border-color: #E7E7FF !important;
+            color : #fff;
         }
         .imgUp
         {
@@ -287,7 +299,7 @@
                                     data-bs-toggle="dropdown">
                                     <div class="avatar avatar-online">
                                         <img src="{{profile_model.profileimg.url}}" alt
-                                            class="w-px-40 h-auto rounded-circle" />
+                                            class="w-px-40  rounded-circle" />
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end">
@@ -297,7 +309,7 @@
                                                 <div class="flex-shrink-0 me-3">
                                                     <div class="avatar avatar-online">
                                                         <img src="{% static 'assets/img/avatars/1.png' %}" alt
-                                                            class="w-px-40 h-auto rounded-circle" />
+                                                            class="w-px-40  rounded-circle" />
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
@@ -400,20 +412,20 @@
                                             <div class="row">
                                             <div class="col-sm-2 imgUp">
                                               <div class="imagePreview"></div>
-                                          <label class="btn btn-primary">
+                                          <label class="btn btn-primaryupload">
                                                                                                   Upload<input type="file" name="image_1" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
                                                           </label>
                                             </div>
                                             <div class="col-sm-2 imgUp">
                                                 <div class="imagePreview"></div>
-                                            <label class="btn btn-primary">
-                                                                                                    Upload<input type="file" name="image_1" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                            <label class="btn btn-primaryupload">
+                                                                                                    Upload<input type="file" name="image_2" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
                                                             </label>
                                               </div>
                                               <div class="col-sm-2 imgUp">
                                                 <div class="imagePreview"></div>
-                                            <label class="btn btn-primary">
-                                                                                                    Upload<input type="file" name="image_1" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                            <label class="btn btn-primaryupload">
+                                                                                                    Upload<input type="file" name="image_2" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
                                                             </label>
                                               </div><!-- col-2 -->
                                            </div><!-- row -->
@@ -806,7 +818,7 @@
     });
   </script> {% endcomment %}
 
-  <script src="{% static 'assets/vendor/libs/dropzone/dropzone.js' %}"></script>
+  {% comment %} <script src="{% static 'assets/vendor/libs/dropzone/dropzone.js' %}"></script> {% endcomment %}
   <script src="{% static 'assets/js/forms-file-upload.js' %}"></script>
 
   <script src="{% static 'assets/vendor/libs/jquery/jquery.js' %}"></script>
