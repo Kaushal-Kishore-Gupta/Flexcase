@@ -75,6 +75,40 @@
             background: lightyellow;
             border-color: gold;
         }
+        .imagePreview {
+            width: 100%;
+            height: 180px;
+            background-position: center center;
+          background:url(http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg);
+          background-color:#fff;
+            background-size: cover;
+          background-repeat:no-repeat;
+            display: inline-block;
+          box-shadow:0px -3px 6px 2px rgba(0,0,0,0.2);
+        }
+        .btn-primary
+        {
+          display:block;
+          border-radius:0px;
+          box-shadow:0px 4px 6px 2px rgba(0,0,0,0.2);
+          margin-top:-5px;
+        }
+        .imgUp
+        {
+          margin-bottom:15px;
+        }
+        .del
+        {
+          position:absolute;
+          top:0px;
+          right:15px;
+          width:30px;
+          height:30px;
+          text-align:center;
+          line-height:30px;
+          background-color:rgba(255,255,255,0.6);
+          cursor:pointer;
+        }
     </style>
     <!-- Page CSS -->
 
@@ -321,11 +355,11 @@
                         <h4 class="fw-bold py-3 mb-4">
                             <span class="text-muted fw-light">Upload Project</span>
                         </h4>
-                     {% comment %} <form action="" method="POST" enctype="multipart/form-data"> {% endcomment %}
+                     <form action="" method="POST" enctype="multipart/form-data">
    <!-- Default -->
                         <div class="card mb-4">
                             <h5 class="card-header"></h5>
-                            <form class="card-body" id="form1">
+                            <div class="card-body">
                                 <h5>1. Project Details</h5>
                                 <div class="row g-3">
                                     <div class="col-md-6">
@@ -353,7 +387,7 @@
                                             placeholder="Long Description of the project | Maximum Limit 2000"></textarea>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
                         </div>
 
                         <div class="row">
@@ -362,17 +396,28 @@
                                 <div class="card">
                                     <h5 class="card-header">2. Project Screenshots 📸</h5>
                                     <div class="card-body">
-                                        <form enctype="multipart/form-data"
-                                            class="dropzone needsclick" id="dropzone-multi">
-                                            <div class="dz-message needsclick">
-                                                Drop files here or click to upload
-                                                <span class="note needsclick">(You can Upload Only <strong>3</strong>
-                                                    Project Images.) <small>(Max File Size : 5MB)</small></span>
+                                        <div class="container">
+                                            <div class="row">
+                                            <div class="col-sm-2 imgUp">
+                                              <div class="imagePreview"></div>
+                                          <label class="btn btn-primary">
+                                                                                                  Upload<input type="file" name="image_1" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                                          </label>
                                             </div>
-                                            <div class="fallback">
-                                                <input name="images" type="file" />
-                                            </div>
-                                        </form>
+                                            <div class="col-sm-2 imgUp">
+                                                <div class="imagePreview"></div>
+                                            <label class="btn btn-primary">
+                                                                                                    Upload<input type="file" name="image_1" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                                            </label>
+                                              </div>
+                                              <div class="col-sm-2 imgUp">
+                                                <div class="imagePreview"></div>
+                                            <label class="btn btn-primary">
+                                                                                                    Upload<input type="file" name="image_1" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                                            </label>
+                                              </div><!-- col-2 -->
+                                           </div><!-- row -->
+                                          </div>
                                     </div>
                                 </div>
                             </div>
@@ -380,7 +425,7 @@
                         <br>
                         <div class="card mb-4">
                             <h5 class="card-header"></h5>
-                            <form class="card-body" id="form2">
+                            <div class="card-body">
                                 <h5>3. Project Links</h5>
                                 <div class="row">
                                     <div class="mb-3 col-md-6 form-password-toggle">
@@ -408,13 +453,13 @@
                                             placeholder="https://customlink.com" />
                                     </div>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                         <div class="pt-4">
                             <button type="submit" class="btn btn-primary me-sm-3 me-1 submit" onclick="submitForms()">Submit</button>
                             <button type="reset" class="btn btn-label-secondary">Cancel</button>
                         </div>
-
+                    </form>
                         <!-- Modern -->
                         {% comment %} <div class="bs-toast toast fade show bg-success" role="alert" aria-live="assertive"
                             aria-atomic="true">
@@ -476,7 +521,7 @@
     <!-- build:js assets/vendor/js/core.js -->
     {% comment %} <script src="{% static 'assets/js/forms-tagify.js' %}"></script> {% endcomment %}
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify@4.1.1/dist/tagify.min.js"></script>
-    <script>
+    {% comment %} <script>
         function submitForms() {
             // Get references to the forms
             var form1 = document.getElementById('form1');
@@ -500,7 +545,7 @@
             xhr.send(formDataCombined);
           }
           
-    </script>
+    </script> {% endcomment %}
     <script>
         var input = document.querySelector('input[name="tags"]');
 
@@ -696,6 +741,39 @@
         })
 
 
+    </script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+<script>
+    $(".imgAdd").click(function(){
+        $(this).closest(".row").find('.imgAdd').before('<div class="col-sm-2 imgUp"><div class="imagePreview"></div><label class="btn btn-primary">Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;"></label><i class="fa fa-times del"></i></div>');
+      });
+      $(document).on("click", "i.del" , function() {
+      // 	to remove card
+        $(this).parent().remove();
+      // to clear image
+        // $(this).parent().find('.imagePreview').css("background-image","url('')");
+      });
+      $(function() {
+          $(document).on("change",".uploadFile", function()
+          {
+                  var uploadFile = $(this);
+              var files = !!this.files ? this.files : [];
+              if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+       
+              if (/^image/.test( files[0].type)){ // only image file
+                  var reader = new FileReader(); // instance of the FileReader
+                  reader.readAsDataURL(files[0]); // read the local file
+       
+                  reader.onloadend = function(){ // set image data as background of div
+                      //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
+      uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url("+this.result+")");
+                  }
+              }
+            
+          });
+      });
     </script>
     {% comment %} <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js"></script>
   <script>
