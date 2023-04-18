@@ -113,6 +113,8 @@ def delete_post(request, pk):
 @csrf_exempt 
 @login_required(login_url="login")
 def upload(request):
+    profile_model = Profile.objects.get(user=request.user)
+    user_model=User.objects.get(username=request.user.username)
     if request.method == "POST":
         user = request.user
         user_profile = Profile.objects.get(user=user)
@@ -151,7 +153,7 @@ def upload(request):
 
         new_post.save()
         return HttpResponse("<h2>Post Updated</h2><br><a href='/'>Home</a>")
-    return render(request, "upload2.html")
+    return render(request, "upload2.html",{"profile_model": profile_model, "user_model": user_model})
 
 @login_required(login_url="login")
 def dashboard(request):
