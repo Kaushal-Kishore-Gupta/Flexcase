@@ -205,7 +205,7 @@ def settings_page(request,source=None):
         return render(request, "usersetting.html", {"profile_model": profile_model, "user_model": user_model})
     if source == "register":
         if profile_model.firstsetting is True:
-            return render(request, "usersetting.html", {"profile_model": profile_model})
+            return render(request, "usersetting.html", {"profile_model": profile_model, "user_model": user_model})
         if request.method == "POST":
             profileimg = request.FILES.get("profileimg")
             profession=request.POST.get("profession")
@@ -236,7 +236,7 @@ def settings_page(request,source=None):
             profile_model.firstsetting = True
             profile_model.save()
             return HttpResponse("<h2>Profile Updated</h2><br><a href='/'>Home</a>")
-        return render(request, "firstsetting.html",{'profile_model':profile_model})
+        return render(request, "firstsetting.html",{'profile_model':profile_model, "user_model": user_model})
     
     if source== "security":
         if request.method == "POST":
