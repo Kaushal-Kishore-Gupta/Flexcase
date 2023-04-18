@@ -23,9 +23,10 @@ class Profile(models.Model):
     branch=models.CharField(max_length=30,blank=True)
     location=models.CharField(max_length=100,blank=True)
     mobilenumber=models.CharField(max_length=10,blank=True)
-    view_count=models.IntegerField(default=0)
-    # total_views = models.IntegerField(default=0)
+    # view_count=models.IntegerField(default=0)
+    profile_views = models.IntegerField(default=0)
     updated_at=models.DateTimeField(auto_now=True)
+    total_post_views = models.IntegerField(default=0)
 
     def __str__(self):
         return self.user.username  #type:ignore
@@ -48,6 +49,7 @@ class Post(models.Model):
     image_3 = models.ImageField(upload_to='project_images', blank=True)
     post_thumbnail = models.ImageField(upload_to='project_images', blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
+    views = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.title

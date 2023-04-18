@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse , redirect
 from django.db.models import Q
+from django.core.cache import cache
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -11,20 +12,36 @@ from io import BytesIO
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
 from datetime import datetime
+from django.utils import timezone
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth import update_session_auth_hash
 
 # Create your views here.
 
 def testp(request):
-    return render(request, "settings.html")
+    return render(request, "New_landing.html")
 
 def home_page(request):
-    posts = Post.objects.order_by('?')
+    sort = request.GET.get('sort', 'random')
+    queryset = Post.objects.order_by('?')
+
+    if sort == 'popularity':
+        queryset = Post.objects.order_by('-views')
+    elif sort == 'oldest':
+        queryset = Post.objects.order_by('date_created')
+    elif sort == 'newest':
+        queryset = Post.objects.order_by('-date_created')
+
+    context = {
+        'posts': queryset,
+        'sort': sort,
+    }
     if request.user.is_authenticated:
         profile_model = Profile.objects.get(user=request.user)
-        return render(request, "index.html", {'posts': posts, 'profile_model':profile_model})
-    return render(request, "index.html", {'posts': posts})
+
+        return render(request, "New_landing.html", {'posts': queryset, 'sort': sort, 'profile_model': profile_model})
+    return render(request, "New_landing.html", {'posts': queryset, 'sort': sort})
+
 
 @csrf_exempt
 def login_page(request):
@@ -78,27 +95,50 @@ def hero_page(request):
     return render(request, "hero.html")
 
 def profile(request, pk):
-    user = User.objects.get(username=pk)
-    posts = Post.objects.filter(user=user).order_by('-date_created')
-    profile_model = Profile.objects.get(user=user)
-    return render(request, "profiletest.html", {"posts": posts , "profile_model": profile_model, "pk": pk})
+    user_model = User.objects.get(username=pk)
+    posts = Post.objects.filter(user=user_model).order_by('-date_created')
+    profile_model = Profile.objects.get(user=user_model)
+    last_access_time = cache.get(f"profile:{pk}:username:{request.user.username}")
+    if last_access_time is None and request.user.username!=pk:
+        profile_model.profile_views += 1
+        profile_model.save()
+    cache.set(f"profile:{pk}:username:{request.user.username}", True, timeout=24*60*60)
+    return render(request, "user-profile.html", {"posts": posts , "profile_model": profile_model, "pk": pk, "user_model": user_model})
 
 def post(request):
     post_id = request.GET.get("post_id")
     post = Post.objects.get(id=post_id)
-    return render(request, "post.html", {"post": post})
+    profile_model = Profile.objects.get(user=post.user)
+    last_access_time = cache.get(f"post:{post_id}:username:{request.user.username}")
+    if last_access_time is None and request.user!=post.user:
+        post.views += 1
+        profile_model.total_post_views += 1
+        profile_model.save()
+        post.save()
+    cache.set(f"post:{post_id}:username:{request.user.username}", True, timeout=24*60*60)
+    time_diff = timezone.now() - post.date_created
+
+    if time_diff.days > 0:
+        post_time = f"{time_diff.days} day(s) ago"
+    elif time_diff.seconds // 3600 > 0:
+        post_time = f"{time_diff.seconds // 3600} hour(s) ago"
+    elif time_diff.seconds // 60 > 0:
+        post_time = f"{time_diff.seconds // 60} minute(s) ago"
+    else:
+        post_time = "just now"
+    return render(request, "post.html", {"post": post, "post_time": post_time})
 
 def search(request):
-    query = request.GET.get('query')
-    posts = Post.objects.filter(Q(title__icontains=query) | Q(description__icontains=query) | Q(tech_stack__icontains=query))
-    profiles = Profile.objects.filter(Q(user__username__icontains=query) | Q(location__icontains=query))
-
+    query = request.GET.get('searchquery')
+    posts = Post.objects.filter(Q(title__icontains=query) | Q(short_description__icontains=query) | Q(tech_stack__icontains=query))
+    # profiles = Profile.objects.filter(Q(user__username__icontains=query) | Q(location__icontains=query))
     context = {
         'query': query,
         'posts': posts,
-        'profiles': profiles
+        # 'profiles': profiles
     }
-    return HttpResponse("<h2>Search Results</h2><br><a href='/'>Home</a>")
+    return render(request, "New_landing.html", {'posts': posts})
+
 
 @login_required(login_url='login')
 def delete_post(request, pk):
@@ -147,6 +187,7 @@ def upload(request):
 def dashboard(request):
     posts = Post.objects.filter(user=request.user).order_by('-date_created')
     profile_model = Profile.objects.get(user=request.user)
+    total_post_views = profile_model.total_post_views
     name = profile_model.user.get_full_name() or profile_model.user.username
     now = datetime.now()
     first_name = request.user.first_name
@@ -159,7 +200,7 @@ def dashboard(request):
         greeting = f"Good Evening, {first_name}! 🌇"
     else:
         greeting = f"Still awake, {first_name}?💤"
-    return render(request, "dashboard.html", {"posts": posts , "profile_model":profile_model, "name": name, "greeting": greeting})
+    return render(request, "dashboard.html", {"posts": posts , "profile_model":profile_model, "name": name, "greeting": greeting, "total_post_views": total_post_views})
 
 @login_required(login_url="login")
 def my_projects(request):

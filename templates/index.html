@@ -266,7 +266,8 @@
               <img class="card__thumb" src="{{post.user_profile.profileimg.url}}" alt="" />
               <div class="card__header-text">
                 <h3 class="card__title">{{post.title}}</h3>
-                <span class="card__status">3 hours ago</span>
+                {% load humanize %}
+                <span class="card__status">{{ post.date_created|timesince }}</span>
               </div>
             </div>
             <p class="card__description">{{post.description}}</p>
