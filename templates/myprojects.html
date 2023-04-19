@@ -230,8 +230,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
-                                                    <span class="fw-semibold d-block">John Doe</span>
-                                                    <small class="text-muted">Admin</small>
+                                                    <span class="fw-semibold d-block">{{request.user.first_name}} {{request.user.last_name}}</span>
+                                                    <small class="text-muted">User</small>
                                                 </div>
                                             </div>
                                         </a>
@@ -240,22 +240,22 @@
                                         <div class="dropdown-divider"></div>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="pages-profile-user.html">
+                                        <a class="dropdown-item" href="{% url 'dashboard' %}">
                                             <i class="bx bx-user me-2"></i>
-                                            <span class="align-middle">My Profile</span>
+                                            <span class="align-middle">Dashboard</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="usersetting.html">
-                                            <i class="bx bx-cog me-2"></i>
-                                            <span class="align-middle">Settings</span>
-                                        </a>
+                                        <a class="dropdown-item" href="{% url  'settings' source="account"%}">
+                                    <i class="bx bx-cog me-2"></i>
+                                    <span class="align-middle">Settings</span>
+                                </a>
                                     </li>
                                     <li>
                                         <div class="dropdown-divider"></div>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="auth-login-cover.html" target="_blank">
+                                        <a class="dropdown-item" href="{% url 'logout' %}" target="_blank">
                                             <i class="bx bx-power-off me-2"></i>
                                             <span class="align-middle">Log Out</span>
                                         </a>
@@ -311,6 +311,7 @@
                             {% for post in posts %}
                             <div class="col" style="height: min-content;">
                                 <div class="card h-100">
+                                    <a href="/post?post_id={{post.id}}" class="card">
                                     <img class="card-img-top" src="{{ post.post_thumbnail.url }}" alt="Card image cap" />
                                     <div class="card-body">
                                         <div class="d-flex align-items-center mb-3">
@@ -320,36 +321,9 @@
                                                   </div>
                                             </a>
                                             <div class="ms-auto">
-                                                <a href="javascript:void(0);" class="text-body"><i
-                                                        class="bx bx-like"></i> 236</a>
+                                                <a href="javascript:void(0);" class="text-body"><i class="fa fa-eye mb-2"></i>  {{ post.views }}</a>
                                             </div>
-                                            <div class="ms-auto">
-                                                <a href="javascript:void(0);" class="text-body"><i class="fa fa-eye mb-2"></i> 236</a>
-                                            </div>
-                                            <div class="ms-auto">
-                                                <ul class="list-inline mb-0 d-flex align-items-center">
-                                                    <li class="list-inline-item">
-                                                        <div class="dropdown">
-                                                            <button type="button"
-                                                                class="btn dropdown-toggle hide-arrow p-0"
-                                                                data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                                    class="bx bx-dots-vertical-rounded"></i></button>
-                                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                                <li><a class="dropdown-item"
-                                                                        href="javascript:void(0);">Edit Project</a></li>
-                                                                <li><a class="dropdown-item"
-                                                                        href="javascript:void(0);">View Project</a></li>
-                                                                <li>
-                                                                    <hr class="dropdown-divider">
-                                                                </li>
-                                                                <li><a class="dropdown-item text-danger"
-                                                                        href={% url 'delete_post' pk=post.id %}>Delete Project</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                            
 
                                         </div>
                                         <p class="myprojectsdescp">{{ post.description }}</p>

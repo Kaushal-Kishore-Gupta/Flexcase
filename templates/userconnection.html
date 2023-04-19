@@ -200,8 +200,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
-                                                    <span class="fw-semibold d-block">John Doe</span>
-                                                    <small class="text-muted">Admin</small>
+                                                    <span class="fw-semibold d-block">{{request.user.first_name}} {{request.user.last_name}}</span>
+                                                    <small class="text-muted">User</small>
                                                 </div>
                                             </div>
                                         </a>
@@ -210,22 +210,22 @@
                                         <div class="dropdown-divider"></div>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="pages-profile-user.html">
+                                        <a class="dropdown-item" href="{% url 'dashboard' %}">
                                             <i class="bx bx-user me-2"></i>
-                                            <span class="align-middle">My Profile</span>
+                                            <span class="align-middle">Dashboard</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="usersetting.html">
-                                            <i class="bx bx-cog me-2"></i>
-                                            <span class="align-middle">Settings</span>
-                                        </a>
+                                        <a class="dropdown-item" href="{% url  'settings' source="account"%}">
+                                    <i class="bx bx-cog me-2"></i>
+                                    <span class="align-middle">Settings</span>
+                                </a>
                                     </li>
                                     <li>
                                         <div class="dropdown-divider"></div>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="auth-login-cover.html" target="_blank">
+                                        <a class="dropdown-item" href="{% url 'logout' %}" target="_blank">
                                             <i class="bx bx-power-off me-2"></i>
                                             <span class="align-middle">Log Out</span>
                                         </a>

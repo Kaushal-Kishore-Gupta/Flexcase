@@ -100,9 +100,9 @@
                
               </ul>
             </div>
-            <a href="javascript:void(0)" class="btn btn-primary text-nowrap">
+            {% comment %} <a href="javascript:void(0)" class="btn btn-primary text-nowrap">
               <i class='bx bx-user-check me-1'></i>Following
-            </a>
+            </a> {% endcomment %}
             <a href="javascript:void(0)" class="btn btn-primary text-nowrap">
                 <i class='bx bx-user me-1'></i>Follow
               </a>
@@ -136,9 +136,8 @@
         <ul class="list-unstyled mt-3 mb-0">
           
           <li class="d-flex align-items-center mb-3"><i class='bx bx-customize'></i><span class="fw-semibold mx-2">Projects Completed:</span> <span>{{posts|length}}</span></li>
-          <li class="d-flex align-items-center"><i class="bx bx-user"></i><span class="fw-semibold mx-2">Followers:</span> <span>1522</span></li><br>{{profile_model.profile_views}}</span></li>
-        </ul>
-          <li class="d-flex align-items-center"><i class="bx bx-user"></i><span class="fw-semibold mx-2">Total profile Views</span> <span>
+          <li class="d-flex align-items-center mb-3"><i class="bx bx-user"></i><span class="fw-semibold mx-2">Followers:</span> <span>1522</span></li>
+          <li class="d-flex align-items-center"><i class="bx bx-user"></i><span class="fw-semibold mx-2">Total Profile Views</span>{{profile_model.profile_views}}<span></li>
         <br>
         <small class="text-muted text-uppercase">Contacts</small>
         <ul class="list-unstyled mt-3 mb-0">
@@ -187,52 +186,17 @@
                               {{post.title}}
                           </div>
                       </a>
-                      <div class="ms-auto">
-                          <a href="javascript:;" class="me-2"><span
-                                  class="badge bg-label-primary">React</span></a>
-                          <a href="javascript:;"><span
-                                  class="badge bg-label-warning">Vue.JS</span></a>
-                      </div>
-                      <div class="ms-auto">
-                          <ul class="list-inline mb-0 d-flex align-items-center">
-                              <li class="list-inline-item">
-                                  <div class="dropdown">
-                                      <button type="button"
-                                          class="btn dropdown-toggle hide-arrow p-0"
-                                          data-bs-toggle="dropdown" aria-expanded="false"><i
-                                              class="bx bx-dots-vertical-rounded"></i></button>
-                                      <ul class="dropdown-menu dropdown-menu-end">
-                                          <li><a class="dropdown-item"
-                                                  href="javascript:void(0);">Edit Project</a></li>
-                                          <li><a class="dropdown-item"
-                                                  href="javascript:void(0);">View Project</a></li>
-                                          <li>
-                                              <hr class="dropdown-divider">
-                                          </li>
-                                          <li><a class="dropdown-item text-danger"
-                                                  href="javascript:void(0);">Delete Project</a>
-                                          </li>
-                                      </ul>
-                                  </div>
-                              </li>
-                          </ul>
-                      </div>
+                      
   
                   </div>
                   <p>{{post.short_description}}</p>
                   <div class="d-flex align-items-center flex-wrap">
                       <a href="javascript:void(0);" class="d-flex align-items-center">
-                          <div class="avatar avatar-md me-2">
-                              <img src="{% static '/assets/img/avatars/1.png'%}" alt="Avatar"
-                                  class="rounded-circle">
-                          </div>
-                          <div class="me-2 text-body h4 mb-0">
-                              John Doe
-                          </div>
+
                       </a>
                       <div class="ms-auto">
                           <a href="javascript:void(0);" class="text-body"><i
-                                  class="bx bx-like"></i> 236</a>
+                                  class="fa fa-eye"></i>  {{post.views}}</a>
                       </div>
   
                   </div>
