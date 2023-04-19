@@ -1843,7 +1843,7 @@ html:not(.layout-menu-collapsed) .bg-menu-theme .menu-inner .menu-item .menu-lin
 .carousel-caption {
     font-family: 'Mochiy Pop One', sans-serif;
     position: absolute;
-    top: 50%;
+    top: 44%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;

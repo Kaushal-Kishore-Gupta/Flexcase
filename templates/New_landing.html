@@ -49,13 +49,90 @@
 
     <!-- Helpers -->
     <script src="{% static 'assets/vendor/js/helpers.js' %}"></script>
+    <style>
+.searchlanding {
+    width:500px;
+    font-size: calc(1.02rem + 0.45vw) !important;
+    text-align: center;
+    height:40px;
+}
+    </style>
 <script src="{% static 'assets/js/config.js' %}"></script>
 </head>
 
 <body>
+    {% if user.is_authenticated %}
     <nav class="navbar navbar-expand-lg bg-navbar-theme">
         <div class="container-fluid">
-            <a class="" href="#"><img src="{% static 'assets/img/icons/brands/logo-black.png' %}" class="img-fluid"></a>
+            <a class="" href="/"><img src="{% static 'assets/img/icons/brands/logo-black.png' %}" class="img-fluid"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-ex-5">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+                <ul class="navbar-nav flex-row align-items-center ms-auto">
+                    <!-- User -->
+                    <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                        <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
+                            data-bs-toggle="dropdown">
+                            <div class="avatar avatar-online">
+                                <img src="{{profile_model.profileimg.url}}" alt
+                                    class="w-px-40 rounded-circle" />
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item" href="usersetting.html">
+                                    <div class="d-flex">
+                                        <div class="flex-shrink-0 me-3">
+                                            <div class="avatar avatar-online">
+                                                <img src="../static/assets/img/avatars/1.png" alt
+                                                    class="w-px-40  rounded-circle" />
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <span class="fw-semibold d-block">John Doe</span>
+                                            <small class="text-muted">Admin</small>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="dropdown-divider"></div>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="pages-profile-user.html">
+                                    <i class="bx bx-user me-2"></i>
+                                    <span class="align-middle">Dashboard</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="usersetting.html">
+                                    <i class="bx bx-cog me-2"></i>
+                                    <span class="align-middle">Settings</span>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="dropdown-divider"></div>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="auth-login-cover.html" target="_blank">
+                                    <i class="bx bx-power-off me-2"></i>
+                                    <span class="align-middle">Log Out</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--/ User -->
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+    {% else %}
+    <nav class="navbar navbar-expand-lg bg-navbar-theme">
+        <div class="container-fluid">
+            <a class="" href="/"><img src="{% static 'assets/img/icons/brands/logo-black.png' %}" class="img-fluid"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-ex-5">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -65,12 +142,18 @@
                         <a class="nav-link" href="{% url 'login' %}"><i class="tf-icons navbar-icon bx bx-user"></i>
                             Sign In</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}"><i class="tf-icons navbar-icon bx bx-user"></i>
+                            Sign Up</a>
+                    </li>
 
                 </ul>
             </div>
         </div>
 
     </nav>
+    {% endif %}
+    
 
 
     <div class="vid">
@@ -85,20 +168,17 @@
                         <center> <img src="{% static 'assets/img/icons/brands/logo-no-background.png' %}"
                                 style="width: 70%; height: 70%; margin-top: 5%"></center>
                     </div>
+                    <br>
+                    
                     <form action="{% url 'search' %}" method="GET">
-                        <div class="input-group mb-3">
-                            <div class="d-flex justify-content-center align-items-center">
-                                <span class="input-group-text border-0 ps-0 py-0" id="email-search">
-                                    <i class="bx bx-search fs-2 text-muted mx-auto text-center"></i>
-                                </span>
-                                <input type="text" name="searchquery" class="form-control email-search-input fs-4 border-0 py-0 "
-                                    style="max-width: 600px;" placeholder="Search..." aria-label="Search..."
-                                    aria-describedby="email-search">
-                                </div>
-                            </div>
-                            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
+                        <div class="input-group mb-3 justify-content-center align-items-center">
+                          <div class="d-flex">
+                            <input type="text" name="searchquery" class="form-control searchlanding border-0 py-0 font-size-16" style="border-radius:20px;" placeholder="Search... 🔍" aria-label="Search..." aria-describedby="search" />
+                          </div>
                         </div>
-                    </form>
+                        <button class="btn btn-outline-info" type="submit" id="button-addon2">Search</button>
+                      </form>
+                      
                     {% comment %}  {% endcomment %}
             </div>
 
@@ -162,8 +242,8 @@
                     {% for post in posts %}
                     <div class="col">
                         <a href="/post?post_id={{post.id}}" class="card">
-                        <div class="card h-100" style="position:relative;">
-                            <img class="card-img-top" src="{{post.post_thumbnail.url}}" alt="Card image cap" />
+                        <div class="card h-100">
+                            <img style="max-height:250px; width:100% object-fit:contain;" class="card-img-top" src="{{post.post_thumbnail.url}}" alt="Card image cap" />
                             <div class="card-body">
                                 <div class="d-flex align-items-center mb-3">
                                     <a href="javascript:void(0);" class="d-flex align-items-center">
@@ -171,7 +251,7 @@
                                         <div class="me-2 text-body h5 mb-0">
                                             {{post.title}}
                                         </div>
-                                        <div class="ms-auto">
+                                        <div class="ms-auto" style="position:absolute; right:0; margin-right:2%">
                                             <a href="javascript:void(0);" class="text-body"><i class="fas fa-eye"></i>
                                                 {{post.views}}</a>
                                         </div>
@@ -185,9 +265,9 @@
                                         {% load humanize %}
                                         {{ post.date_created|timesince }}</a>
                                 </div>
-                                <p>{{post.short_description}}
+                                <p style="margin-bottom:15%; display: -webkit-box; -webkit-box-orient:vertical; overflow:hidden;  text-overflow:ellipsis; -webkit-line-clamp:2; max-height:2.4em; line-height:1.2em;">{{post.short_description}}
                                     </p>
-                                <div class="d-flex align-items-center flex-wrap" style="position:absolute; bottom:0; ">
+                                <div class="d-flex align-items-center flex-wrap" style="position:absolute; bottom:0; margin-bottom:8px; ">
                                     <a href="javascript:void(0);" class="d-flex align-items-center">
                                         <div class="avatar avatar-md me-2">
                                             <img src="{{post.user_profile.profileimg.url}}" alt="Avatar" class="rounded-circle">

@@ -125,17 +125,11 @@
                             <div>My Projects</div>
                         </a>
                     </li>
-                    <li class="menu-item">
-                        <a href="projects.html" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-globe"></i>
-                            <div>Explore Projects</div>
-                        </a>
-                    </li>
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">User</span>
                     </li>
                     <li class="menu-item">
-                        <a href="userprofile.html" class="menu-link">
+                        <a href="{% url 'profile' pk=request.user.username %}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-user"></i>
                             <div data-i18n="Profile">Public Profile</div>
                         </a>
@@ -280,8 +274,7 @@
                                         <div class="col-sm-7">
                                             <div class="card-body">
                                                 <h5 class="card-title text-primary">{{ greeting }}</h5>
-                                                <p class="mb-4">You have done <span class="fw-bold">72%</span> more
-                                                    sales today. Check your new badge in your profile.</p>
+                                                <p class="mb-4">You have posted <span class="fw-bold">{{posts | length}}</span> post till now..</p>
                                             </div>
                                         </div>
                                         <div class="col-sm-5 text-center text-sm-left">
@@ -351,7 +344,7 @@
                                                 <div class="mt-sm-auto">
                                                     <small class="text-success text-nowrap fw-semibold"><i
                                                             class='bx bx-chevron-up'></i> 18.2%</small>
-                                                    <h3 class="mb-0">686</h3>
+                                                    <h3 class="mb-0">{{profile_model.profile_views}}</h3>
                                                 </div>
                                             </div>
                                             <div id="profileReportChart" style="width: 400px; height: 100px;"></div>

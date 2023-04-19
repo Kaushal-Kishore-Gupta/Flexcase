@@ -109,6 +109,7 @@ def post(request):
     post_id = request.GET.get("post_id")
     post = Post.objects.get(id=post_id)
     profile_model = Profile.objects.get(user=post.user)
+    post_count = Post.objects.filter(user=post.user).count()
     last_access_time = cache.get(f"post:{post_id}:username:{request.user.username}")
     if last_access_time is None and request.user!=post.user:
         post.views += 1
@@ -126,7 +127,7 @@ def post(request):
         post_time = f"{time_diff.seconds // 60} minute(s) ago"
     else:
         post_time = "just now"
-    return render(request, "post.html", {"post": post, "post_time": post_time})
+    return render(request, "post.html", {"post": post, "post_time": post_time, "post_count": post_count})
 
 def search(request):
     query = request.GET.get('searchquery')
@@ -153,6 +154,7 @@ def delete_post(request, pk):
 @csrf_exempt 
 @login_required(login_url="login")
 def upload(request):
+    profile_model = Profile.objects.get(user=request.user)
     if request.method == "POST":
         user=request.user
         user_profile=Profile.objects.get(user=user)
@@ -181,11 +183,11 @@ def upload(request):
         new_post=Post(user=user,user_profile=user_profile,title=title,short_description=short_description,long_description=long_description,tech_stack=tech_stack,github_link=github_link,website_link=website_link,youtube_link=youtube_link,custom_link=custom_link,image_1=image_1,image_2=image_2,image_3=image_3,post_thumbnail=post_thumbnail)
         new_post.save()
         return HttpResponse("<h2>Post Updated</h2><br><a href='/'>Home</a>")
-    return render(request, "upload.html")
+    return render(request, "upload.html", {"profile_model": profile_model})
 
 @login_required(login_url="login")
 def dashboard(request):
-    posts = Post.objects.filter(user=request.user).order_by('-date_created')
+    posts = Post.objects.filter(user=request.user)
     profile_model = Profile.objects.get(user=request.user)
     total_post_views = profile_model.total_post_views
     name = profile_model.user.get_full_name() or profile_model.user.username
