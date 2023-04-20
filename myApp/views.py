@@ -147,6 +147,13 @@ def search(request):
 def delete_post(request, pk):
     post = Post.objects.get(id=pk)
     if request.user == post.user:
+        if post.image_1:
+            post.image_1.delete()
+        if post.image_2:
+            post.image_2.delete()
+        if post.image_3:
+            post.image_3.delete()
+        post.post_thumbnail.delete()
         post.delete()
         messages.success(request, 'Your post has been deleted.')
     else:

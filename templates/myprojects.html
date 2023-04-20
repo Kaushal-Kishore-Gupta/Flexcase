@@ -320,7 +320,29 @@
                                                     {{ post.title }}
                                                   </div>
                                             </a>
-                                            <div class="ms-auto">
+                                        <div class="ms-auto">
+                                            <ul class="list-inline mb-0 d-flex align-items-center">
+                                                <li class="list-inline-item">
+                                                    <div class="dropdown">
+                                                        <button type="button"
+                                                            class="btn dropdown-toggle hide-arrow p-0"
+                                                            data-bs-toggle="dropdown" aria-expanded="false"><i
+                                                                class="bx bx-dots-vertical-rounded"></i></button>
+                                                        <ul class="dropdown-menu dropdown-menu-end">
+                                                            <li><a class="dropdown-item"
+                                                                    href="javascript:void(0);">Edit Project</a></li>
+                                                            <li><a class="dropdown-item"
+                                                                    href="javascript:void(0);">View Project</a></li>
+                                                            <li>
+                                                                <hr class="dropdown-divider">
+                                                            </li>
+                                                            <li><a class="dropdown-item text-danger"
+                                                                    href={% url 'delete_post' pk=post.id %}>Delete Project</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            </ul>
                                                 <a href="javascript:void(0);" class="text-body"><i class="fa fa-eye mb-2"></i>  {{ post.views }}</a>
                                             </div>
                                             
