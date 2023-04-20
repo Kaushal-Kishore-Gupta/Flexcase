@@ -131,6 +131,8 @@ def post(request):
 
 def search(request):
     query = request.GET.get('searchquery')
+    if query is None:
+        return redirect('/')
     posts = Post.objects.filter(Q(title__icontains=query) | Q(short_description__icontains=query) | Q(tech_stack__icontains=query))
     # profiles = Profile.objects.filter(Q(user__username__icontains=query) | Q(location__icontains=query))
     context = {
