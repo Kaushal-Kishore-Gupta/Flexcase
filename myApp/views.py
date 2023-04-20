@@ -233,6 +233,13 @@ def settings_page(request,source=None):
             if profileimg:
                 if profile_model.profileimg.url != "/media/profile_images/default-user.png":
                     profile_model.profileimg.delete(save=False)
+                profileimg_file = BytesIO(profileimg.read())
+                profileimg_image = Image.open(profileimg_file)
+                profileimg_image.thumbnail((200, 200))
+                profileimg_file = BytesIO()
+                profileimg_image.save(profileimg_file, profileimg_image.format)
+                profileimg_file.seek(0)
+                profileimg = InMemoryUploadedFile(profileimg_file, 'ImageField', profileimg.name, profileimg.content_type, None, None)
                 profile_model.profileimg = profileimg
             user_model.save()
             profile_model.save()
@@ -257,6 +264,13 @@ def settings_page(request,source=None):
             if profileimg:
                 if profile_model.profileimg.url != "/media/profile_images/default-user.png":
                     profile_model.profileimg.delete(save=False)
+                profileimg_file = BytesIO(profileimg.read())
+                profileimg_image = Image.open(profileimg_file)
+                profileimg_image.thumbnail((200, 200))
+                profileimg_file = BytesIO()
+                profileimg_image.save(profileimg_file, profileimg_image.format)
+                profileimg_file.seek(0)
+                profileimg = InMemoryUploadedFile(profileimg_file, 'ImageField', profileimg.name, profileimg.content_type, None, None)
                 profile_model.profileimg = profileimg
             profile_model.profession=profession
             profile_model.bio = bio
